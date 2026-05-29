@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "cont-title": "Contact & Informations Générales",
             "cont-subtitle": "Passez nous voir à l'atelier ou réservez par téléphone",
             "cont-h-coord": "📍 Coordonnées",
+            "cont-h-contact": "✉️ Contact",
             "cont-addr": "11 Rue de la Paix, 74000 Annecy, France",
             "cont-h-hours": "⏱️ Horaires d'Ouverture",
             "days-w": "Lundi au Vendredi :",
@@ -215,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "rdv-warn": "* Sur rendez-vous pris la veille au plus tard",
             "footer-cgv": "Conditions Générales de Vente (CGV)",
 
-            "nav-shop": "Vélos à vendre", 
+            "nav-shop": "Vélos à vendre 🏷️", 
             "shop-title": "Nos Vélos d'Occasion & Neufs", 
             "shop-subtitle": "Des vélos entièrement révisés par nos experts, prêts à rouler"
         },
@@ -346,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "cont-title": "Contact & General Info",
             "cont-subtitle": "Visit our workshop or book by phone",
             "cont-h-coord": "📍 Contact Info",
+            "cont-h-contact": "✉️ Contact",
             "cont-addr": "11 Rue de la Paix, 74000 Annecy, France",
             "cont-h-hours": "⏱️ Opening Hours",
             "days-w": "Monday to Friday:",
@@ -353,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "rdv-warn": "* By appointment booked the day before at the latest",
             "footer-cgv": "Terms & Conditions (CGV)",
 
-            "nav-shop": "Bikes for sale", 
+            "nav-shop": "Bikes for sale 🏷️", 
             "shop-title": "Our Used & New Bikes", 
             "shop-subtitle": "Bikes fully serviced by our experts, ready to ride"
         }
