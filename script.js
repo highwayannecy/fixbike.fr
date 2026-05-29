@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             type: "Vélo de route",
             price: "1 600 €",
             state: "Occasion - Très bon état",
-            image: "assets/trek.png",
+            image: "assets/trek.jpg",
             features: ["Cadre Carbone léger", "Transmission Shimano Ultegra 2x11v", "Poids : 7,8 kg", "Roues : Vittoria QURANO 60 Full Carbon CLINCHER Wheel Set with G+ Graphene"]
         },
         {
