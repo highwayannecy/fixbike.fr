@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
             name: "NCM T3s",
             type: "VAE / Électrique",
             price: "1 250 €",
-            state: "Excellent état",
+            state: "Proche du neuf",
             image: "assets/ncm_t3s.webp",
-            features: ["Moteur DAS-KIT x15", "Batterie 576Wh", "Autonomie ~90km", "Révisé et garanti 12 mois"]
+            features: ["Moteur DAS-KIT x15 (55 Nm)", "Batterie 576Wh", "Autonomie ~90km", "Révisé et garanti 12 mois"]
         },
         {
             id: 2,
@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             id: 3,
-            name: "Triban RC 120",
-            type: "Route / Ville",
-            price: "390 €",
-            state: "Proche du neuf",
-            image: "assets/velo-triban.png",
-            features: ["Cadre sloping alu", "Fourche carbone", "2x8 vitesses", "Idéal vélotaf ou débutant"]
-        }
+            name: "Orbea AVANT H60 2025",
+            type: "Vélo de route",
+            price: "1 000 €",
+            state: "Occasion - Excellent état",
+            image: "assets/orbea.webp",
+            features: ["Cadre Aluminium", "Transmission Shimano Ultegra 2x8v", "Poids : 10,2 kg", "Freins à disque mécanique"]
+        },
     ];
 
     // Définition du Header Personnalisé
