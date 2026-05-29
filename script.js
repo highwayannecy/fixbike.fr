@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             id: 2,
-            name: "Specialized Sirrus X 3.0",
-            type: "VTC Sportif",
-            price: "650 €",
+            name: "TREK ÉMONDA SL 6 PRO 2018",
+            type: "Vélo de route",
+            price: "1 600 €",
             state: "Occasion - Très bon état",
             image: "assets/velo-specialized.png",
-            features: ["Cadre Aluminium léger", "Transmission Shimano 1x9v", "Freins à disque hydrauliques", "Pneus gravel 42mm"]
+            features: ["Cadre Carbone léger", "Transmission Shimano Ultegra 2x11v", "Poids : 7,8 kg", "Roues : Vittoria QURANO 60 Full Carbon CLINCHER Wheel Set with G+ Graphene"]
         },
         {
             id: 3,
