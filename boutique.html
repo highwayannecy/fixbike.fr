@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix-Bike - Vélos à Vendre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER CENTRALISÉ -->
+    <custom-header></custom-header>
+
+    <main class="container" style="margin-top: 120px;">
+        <section id="boutique-velos">
+            <div class="section-title">
+                <h2 data-i18n="shop-title">Nos Vélos d'Occasion & Neufs</h2>
+                <p data-i18n="shop-subtitle">Des vélos entièrement révisés par nos experts, prêts à rouler</p>
+            </div>
+
+            <!-- Grille où le pattern de cartes sera injecté toujours de la même façon -->
+            <div class="revision-grid" id="bikes-grid">
+                <!-- Les cartes de vélos s'afficheront ici dynamiquement via script.js -->
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER CENTRALISÉ -->
+    <custom-footer></custom-footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

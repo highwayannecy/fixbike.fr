@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix-Bike - Atelier de Réparation et Location de Vélos à Annecy</title>
+    <!-- Liaison vers le fichier CSS externe de maintenance -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Popup Promo -->
+    <div class="popup-overlay" id="promoPopup">
+        <div class="popup-content">
+            <button class="close-popup" id="closePopup">✕</button>
+            <div class="popup-subtitle">À partir de juin</div>
+            <img src="assets/balade.png" alt="Affiche Balade Guidée" class="popup-img">
+            <div>
+                <a href="#balade" class="popup-btn" id="popupAction">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER CENTRALISÉ (Appelé depuis script.js) -->
+    <custom-header></custom-header>
+
+    <!-- Contenu Principal -->
+    <main class="container">
+        <!-- Section Révisions -->
+        <section id="revisions">
+            <div class="section-title">
+                <h2 data-i18n="rev-title">Forfaits Révision</h2>
+                <p data-i18n="rev-subtitle">Des formules transparentes pour un entretien optimal</p>
+            </div>
+
+            <div class="revision-grid">
+                <div class="revision-card">
+                    <div>
+                        <div class="badge">Express</div>
+                        <div class="price-tag">35 €</div>
+                        <ul class="feature-list">
+                            <li data-i18n="rev-exp-1">Réglage frein et vitesses</li>
+                            <li data-i18n="rev-exp-2">Gonflage pneus</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="revision-card silver-package">
+                    <div>
+                        <div class="badge">Silver</div>
+                        <div class="price-tag">50 €</div>
+                        <ul class="feature-list">
+                            <li data-i18n="rev-sil-1"><strong>Inclus Formule Express</strong></li>
+                            <li data-i18n="rev-sil-2">Nettoyage et graissage transmission</li>
+                            <li data-i18n="rev-sil-3">Contrôle des roues et pédalier</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="revision-card gold-package">
+                    <div>
+                        <div class="badge">Gold</div>
+                        <div class="price-tag">60 €</div>
+                        <ul class="feature-list">
+                            <li data-i18n="rev-gld-1"><strong>Inclus Formule Silver</strong></li>
+                            <li data-i18n="rev-gld-2">Contrôle du jeu de direction</li>
+                            <li data-i18n="rev-gld-3">Nettoyage complet du vélo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="disclaimer-text" data-i18n="pieces-disclaimer">* Les prix n’incluent pas les pièces de rechange</div>
+        </section>
+
+        <!-- Section Réparations -->
+        <section id="reparations">
+            <div class="section-title">
+                <h2 data-i18n="rep-title">Tarifs Réparation</h2>
+                <p data-i18n="rep-subtitle">Interventions ciblées selon le niveau de complexité</p>
+            </div>
+
+            <div class="repair-box">
+                <div class="repair-category-title" data-i18n="cat-wheel">ROUE</div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-1">Niveau 1</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-w1-t">Montage simple</strong>
+                        <span data-i18n="rep-w1-d">Changement de pneu ou chambre à air</span>
+                    </div>
+                    <div class="repair-price">20 €</div>
+                </div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-2">Niveau 2</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-w2-t">Montage simple + medium</strong>
+                        <span data-i18n="rep-w2-d">Dévoilage léger + réglages</span>
+                    </div>
+                    <div class="repair-price">45 €</div>
+                </div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-3">Niveau 3</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-w3-t">Montage simple + medium + complexe</strong>
+                        <span data-i18n="rep-w3-d">Changement de jante ou montage tubeless + réglages</span>
+                    </div>
+                    <div class="repair-price">70 €</div>
+                </div>
+
+                <div class="repair-category-title" data-i18n="cat-brake">FREIN</div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-1">Niveau 1</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-b1-t">Montage simple</strong>
+                        <span data-i18n="rep-b1-d">Câble ou gaine + réglages</span>
+                    </div>
+                    <div class="repair-price">25 €</div>
+                </div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-2">Niveau 2</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-b2-t">Montage simple + medium</strong>
+                        <span data-i18n="rep-b2-d">Changement patins ou plaquettes ou disque ou purge + réglages</span>
+                    </div>
+                    <div class="repair-price">45 €</div>
+                </div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-3">Niveau 3</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-b3-t">Montage simple + medium + complexe</strong>
+                        <span data-i18n="rep-b3-d">Changement étrier/levier + réglages</span>
+                    </div>
+                    <div class="repair-price">70 €</div>
+                </div>
+
+                <div class="repair-category-title" data-i18n="cat-trans">TRANSMISSION</div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-1">Niveau 1</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-t1-t">Montage simple</strong>
+                        <span data-i18n="rep-t1-d">Câble ou gaine ou chaîne + réglages</span>
+                    </div>
+                    <div class="repair-price">35 €</div>
+                </div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-2">Niveau 2</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-t2-t">Montage simple + medium</strong>
+                        <span data-i18n="rep-t2-d">Manette dérailleur + réglages + nettoyage et lubrification</span>
+                    </div>
+                    <div class="repair-price">55 €</div>
+                </div>
+                <div class="repair-row">
+                    <div class="level-badge" data-i18n="lvl-3">Niveau 3</div>
+                    <div class="repair-desc">
+                        <strong data-i18n="rep-t3-t">Montage simple + medium + complexe</strong>
+                        <span data-i18n="rep-t3-d">Dérailleur ou cassette + réglages + nettoyage et lubrification</span>
+                    </div>
+                    <div class="repair-price">80 €</div>
+                </div>
+            </div>
+            <div class="disclaimer-text" data-i18n="pieces-disclaimer">* Les prix n’incluent pas les pièces de rechange</div>
+        </section>
+
+        <!-- Section Location -->
+        <section id="locations">
+            <div class="section-title">
+                <h2 data-i18n="rent-title">Service Location</h2>
+                <p data-i18n="rent-subtitle">Des équipements de qualité loués à l'heure</p>
+            </div>
+
+            <div class="rental-box">
+                <table class="rental-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="th-equip">Équipement / Type de Vélo</th>
+                            <th data-i18n="th-price">Tarif Par Heure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>VAE / Vélo Électrique</strong> <small style="color:#94a3b8;">(E-Bike)</small></td>
+                            <td class="rental-price-cell">14 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vélo VTC Sportif</strong> <small style="color:#94a3b8;">(Road Mountain Bike)</small></td>
+                            <td class="rental-price-cell">10 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vélo Ville Classique</strong> <small style="color:#94a3b8;">(City Bike)</small></td>
+                            <td class="rental-price-cell">8 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vélo Enfant *</strong> <small style="color:#94a3b8;">(Child Bike)</small></td>
+                            <td class="rental-price-cell">6 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Charette Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Trailer)</small></td>
+                            <td class="rental-price-cell">10 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Siège Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Baby Seat)</small></td>
+                            <td class="rental-price-cell">4 €</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="rental-note-banner" data-i18n="rent-warn">
+                    ⚠️ Chaque heure entamée est due ⏱️
+                </div>
+
+                <div class="rental-sub-notes">
+                    <p data-i18n="rent-foot-1">* Jusqu'à 1m45</p>
+                    <p data-i18n="rent-foot-2">** Location accompagnée d'un de nos vélos. Location seule : Charette 20 €/h, Siège Enfant 10 €/h.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Balade -->
+        <section id="balade">
+            <div class="section-title">
+                <h2 data-i18n="tour-title">Découverte du lac d'Annecy</h2>
+                <p data-i18n="tour-subtitle">Balade Guidée en Vélo Électrique autour du Lac d’Annecy</p>
+            </div>
+
+            <div class="tour-box">
+                <p style="margin-bottom: 30px; font-style: italic; color: var(--text-muted); text-align: center;" data-i18n="tour-intro">
+                    Les horaires indiqués sont donnés à titre indicatif afin de garder une expérience détendue et agréable. Le programme reste flexible et le retour peut se faire légèrement plus tôt selon le rythme du groupe.
+                </p>
+
+                <div class="tour-layout">
+                    <div class="tour-included-box">
+                        <h3 data-i18n="tour-inc-h">Inclus</h3>
+                        <ul class="feature-list" style="margin-top: 0;">
+                            <li data-i18n="tour-inc-1">Vélo électrique</li>
+                            <li data-i18n="tour-inc-2">Casque</li>
+                            <li data-i18n="tour-inc-3">Guide local</li>
+                            <li data-i18n="tour-inc-4">Anecdotes & spots cachés</li>
+                            <li data-i18n="tour-inc-5">Picnic au bord du lac</li>
+                            <li data-i18n="tour-inc-6">Pauses photos</li>
+                            <li data-i18n="tour-inc-7">Petits groupes (max. 10 personnes)</li>
+                        </ul>
+                        <p style="margin-top: 25px; font-weight: bold; color: #f27a24; text-align: center;" data-i18n="tour-tagline">Découvrez Annecy comme un local 🚴‍♂️🌿</p>
+                    </div>
+
+                    <div class="tour-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">9h00</div>
+                            <div class="timeline-title" data-i18n="t-900-t">Accueil & Briefing</div>
+                            <div class="timeline-desc" data-i18n="t-900-d">Accueil au magasin, réglage des vélos, casques, eau et présentation rapide du programme et des consignes de sécurité...</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">9h30</div>
+                            <div class="timeline-title" data-i18n="t-930-t">Départ vers le lac</div>
+                            <div class="timeline-desc" data-i18n="t-930-d">Passage par Le Pâquier, les Jardins de l’Europe et le célèbre Pont des Amours...</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">9h45</div>
+                            <div class="timeline-title" data-i18n="t-945-t">Arrêt Pont des Amours</div>
+                            <div class="timeline-desc" data-i18n="t-945-d">Découverte de la légende du pont et pause photos.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">10h00</div>
+                            <div class="timeline-title" data-i18n="t-1000-t">Balade rive Est</div>
+                            <div class="timeline-desc" data-i18n="t-1000-d">Portion facile et agréable avec plusieurs points de vue panoramiques.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">10h30</div>
+                            <div class="timeline-title" data-i18n="t-1030-t">Veyrier-du-Lac</div>
+                            <div class="timeline-desc" data-i18n="t-1030-d">Découverte de l’un des plus beaux villages du lac avec son eau turquoise.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">11h15</div>
+                            <div class="timeline-title" data-i18n="t-1115-t">Arrivée à Menthon-Saint-Bernard</div>
+                            <div class="timeline-desc" data-i18n="t-1115-d">Pause dans le charmant village situé au pied du célèbre château.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">11h30</div>
+                            <div class="timeline-title" data-i18n="t-1130-t">Arrêt Château de Menthon</div>
+                            <div class="timeline-desc" data-i18n="t-1130-d">Pause panoramique proche du château médiéval, inspiration Disney.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">12h10</div>
+                            <div class="timeline-title" data-i18n="t-1210-t">Route vers Talloires</div>
+                            <div class="timeline-desc" data-i18n="t-1210-d">L’une des plus belles portions de la balade avec des paysages alpins uniques.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">12h30</div>
+                            <div class="timeline-title" data-i18n="t-1230-t">Arrivée à Talloires</div>
+                            <div class="timeline-desc" data-i18n="t-1230-d">Découverte de l’atmosphère paisible de ce village incontournable.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">12h45</div>
+                            <div class="timeline-title" data-i18n="t-1245-t">Picnic au bord du lac</div>
+                            <div class="timeline-desc" data-i18n="t-1245-d">Moment détente avec picnic, baignade possible et temps libre.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">13h45</div>
+                            <div class="timeline-title" data-i18n="t-1345-t">Départ retour</div>
+                            <div class="timeline-desc" data-i18n="t-1345-d">Retour plus calme et relaxant le long des rives.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">14h45</div>
+                            <div class="timeline-title" data-i18n="t-1445-t">Pause baignade / plage</div>
+                            <div class="timeline-desc" data-i18n="t-1445-d">Pause détente au bord de l'eau.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">15h45</div>
+                            <div class="timeline-title" data-i18n="t-1545-t">Retour par la voie verte</div>
+                            <div class="timeline-desc" data-i18n="t-1545-d">Portion facile et sécurisée sur la piste cyclable.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">16h30</div>
+                            <div class="timeline-title" data-i18n="t-1630-t">Dernier arrêt panorama</div>
+                            <div class="timeline-desc" data-i18n="t-1630-d">Dernières photos et échanges conviviaux avant l'arrivée.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">17h00</div>
+                            <div class="timeline-title" data-i18n="t-1700-t">Retour Annecy centre</div>
+                            <div class="timeline-desc" data-i18n="t-1700-d">Fin de la boucle dans le centre-ville d’Annecy.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">17h00 ➔ 17h30</div>
+                            <div class="timeline-title" data-i18n="t-1730-t">Fin d’expérience</div>
+                            <div class="timeline-desc" data-i18n="t-1730-d">Partage des photos, avis et fin de journée collective.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-map-box">
+                    <h3 data-i18n="tour-map-h">Carte de l'itinéraire</h3>
+                    <img src="assets/carte.png" alt="Carte Itinéraire Lac d'Annecy" class="tour-map-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact">
+            <div class="section-title">
+                <h2 data-i18n="cont-title">Contact & Informations Générales</h2>
+                <p data-i18n="cont-subtitle">Passez nous voir à l'atelier ou réservez par téléphone</p>
+            </div>
+
+            <div class="info-section">
+                <div class="info-block">
+                    <h3 data-i18n="cont-h-coord">📍 Coordonnées</h3>
+                    <p><strong>FixBike Annecy</strong></p>
+                    <p data-i18n="cont-addr">11 Rue de la Paix, 74000 Annecy, France</p>
+                    <p><strong>Téléphone :</strong> <a href="tel:0979070336" style="color:var(--primary); text-decoration:none; font-weight:600;">09 79 07 03 36</a></p>
+                    <p><strong>Email :</strong> fixbike74@gmail.com</p>
+
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2777.0133464525866!2d6.124673376916599!3d45.90105310555365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478b8fcba2d10aa3%3A0x673dbfeeececc2aa!2s11%20Rue de la Paix%2C%2074000%20Annecy!5e0!3m2!1sfr!2sfr!4v1716912345678!5m2!1sfr!2sfr" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <a href="https://maps.google.com/?q=Fix-Bike+11+Rue+de+la+Paix+74000+Annecy" target="_blank" class="map-btn">🗺️ Ouvrir l'itinéraire</a>
+                </div>
+
+                <div class="info-block">
+                    <h3 data-i18n="cont-h-hours">⏱️ Horaires d'Ouverture</h3>
+                    <p><strong data-i18n="days-w">Lundi au Vendredi :</strong> 10h00 - 12h00 / 14h00 - 18h30</p>
+                    <p><strong data-i18n="days-s-su">Samedi et Dimanche * :</strong> 10h30 - 12h00 / 14h30 - 17h30</p>
+                    <p style="font-size: 13px; font-style: italic; margin-top: 5px;" data-i18n="rdv-warn">* Sur rendez-vous pris la veille au plus tard</p>
+                </div>
+
+                <div class="info-block">
+                    <h3 data-i18n="cont-h-coord">📍 Contact</h3>
+
+                    <!-- Formulaire adapté pour Web3Forms ou Getform (gérant les fichiers) -->
+                    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="contact-form">
+
+                        <!-- Clé d'accès Web3Forms (à remplacer par la vôtre) -->
+                        <input type="hidden" name="access_key" value="88e7e542-56e3-41d1-92f7-00bc181a9f45">
+
+                        <div class="form-group">
+                            <label for="form-name" data-i18n="form-name-lbl">Nom complet</label>
+                            <input type="text" id="form-name" name="name" required placeholder="Ex: Jean Dupont">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-email" data-i18n="form-email-lbl">Adresse Email</label>
+                            <input type="email" id="form-email" name="email" required placeholder="Ex: jean.dupont@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-phone" data-i18n="form-phone-lbl">Téléphone (Optionnel)</label>
+                            <input type="tel" id="form-phone" name="phone" placeholder="Ex: 06 12 34 56 78">
+                        </div>
+
+                        <!-- NOUVEAU : Sélection du sujet -->
+                        <div class="form-group">
+                            <label for="form-subject" data-i18n="form-subject-lbl">Sujet de votre demande</label>
+                            <select id="form-subject" name="subject" required>
+                                <option value="" disabled selected data-i18n="form-subj-select">-- Choisissez un sujet --</option>
+                                <option value="Réparation / Révision" data-i18n="form-subj-rep">Réparation / Révision d'un vélo</option>
+                                <option value="Location" data-i18n="form-subj-rent">Location de matériel</option>
+                                <option value="Balade Guidée" data-i18n="form-subj-tour">Réservation Balade Guidée</option>
+                                <option value="Autre" data-i18n="form-subj-other">Autre demande</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message" data-i18n="form-msg-lbl">Votre message / Détails</label>
+                            <textarea id="form-message" name="message" rows="4" required placeholder="Précisez votre demande..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" data-i18n="form-btn-submit">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER CENTRALISÉ (Appelé depuis script.js) -->
+    <custom-footer></custom-footer>
+
+    <!-- Liaison vers le fichier JavaScript externe commun -->
+    <script src="script.js"></script>
+</body>
+
+</html>
