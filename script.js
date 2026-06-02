@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             price: "1 250 €",
             state: "Proche du neuf",
             image: "assets/ncm_t3s.webp",
-            features: ["Moteur DAS-KIT x15 (55 Nm)", "Batterie 576Wh", "Autonomie ~90km", "Révisé et garanti 12 mois"]
+            features: ["Taille 26\"", "Moteur DAS-KIT x15 (55 Nm)", "Batterie 576Wh", "Autonomie ~90km", "Révisé et garanti 12 mois constructeur"]
         },
         {
             id: 2,
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             price: "1 600 €",
             state: "Occasion - Très bon état",
             image: "assets/trek.jpg",
-            features: ["Cadre Carbone léger", "Transmission Shimano Ultegra 2x11v", "Poids : 7,8 kg", "Roues : Vittoria QURANO 60 Full Carbon CLINCHER Wheel Set with G+ Graphene"]
+            features: ["Taille 58 (XL)", "Cadre Carbone léger", "Transmission Shimano Ultegra 2x11v", "Poids : 7,8 kg", "Roues : Vittoria QURANO 60 Full Carbon CLINCHER Wheel Set with G+ Graphene"]
         },
         {
             id: 3,
@@ -27,7 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
             price: "1 000 €",
             state: "Occasion - Excellent état",
             image: "assets/orbea.webp",
-            features: ["Cadre Aluminium", "Transmission Shimano Ultegra 2x8v", "Poids : 10,2 kg", "Freins à disque mécanique"]
+            features: ["Taille 53 (S/M)", "Cadre Aluminium", "Transmission Shimano Claris 2x8v", "Poids : 10,2 kg", "Freins à disque mécanique"]
+        },
+        {
+            id: 4,
+            name: "ROSSIGNOL Heretic Deore 12",
+            type: "VTT Enduro Tout-Suspendu",
+            price: "2 700 €",
+            state: "Neuf",
+            image: "assets/rossignol.jpg",
+            features: ["Taille L", "Transmission Shimano Deore 1x12v", "Poids : 17,2 kg", "Disques hydrauliques 4 pistons", "Fourche : Marzocchi Bomber Z1 Rail 2.0 (170 mm de débattement)", "Amortisseur : Marzocchi Bomber Air (165 mm de débattement)"]
         },
     ];
 
