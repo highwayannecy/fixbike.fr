@@ -951,7 +951,7 @@ footer {
     }
 
     .info-section {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
     }
 
     .rental-table th:last-child,
