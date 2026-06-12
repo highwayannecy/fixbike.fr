@@ -89,146 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
     customElements.define('custom-footer', CustomFooter);
 
     // SYSTEME DE TRADUCTION DE LANGUE COMPLET
+    // Objet de traduction contenant uniquement la langue alternative (Anglais)
     const translations = {
-        fr: {
-            // Navigation & Hero
-            "nav-revisions": "Révisions",
-            "nav-reparations": "Réparations",
-            "nav-rental": "Locations",
-            "nav-tour": "Balade Guidée",
-            "nav-contact": "Contact & Accès",
-            "hero-title": "Votre Expert Vélo de Confiance à Annecy",
-            "hero-subtitle": "Réparation toutes marques, révisions complètes et service de location sur mesure. Repartez l'esprit tranquille.",
-
-            // Révisions
-            "rev-title": "Forfaits Révision",
-            "rev-subtitle": "Des formules transparentes pour un entretien optimal",
-            "rev-exp-1": "Réglage frein et vitesses",
-            "rev-exp-2": "Gonflage pneus",
-            "rev-sil-1": "<strong>Inclus Formule Express</strong>",
-            "rev-sil-2": "Nettoyage et graissage transmission",
-            "rev-sil-3": "Contrôle des roues et pédalier",
-            "rev-gld-1": "<strong>Inclus Formule Silver</strong>",
-            "rev-gld-2": "Contrôle du jeu de direction",
-            "rev-gld-3": "Nettoyage complet du vélo",
-            "pieces-disclaimer": "* Les prix n’incluent pas les pièces de rechange",
-
-            // Réparations
-            "rep-title": "Tarifs Réparation",
-            "rep-subtitle": "Interventions ciblées selon le niveau de complexité",
-            "cat-wheel": "ROUE",
-            "cat-brake": "FREIN",
-            "cat-trans": "TRANSMISSION",
-            "lvl-1": "Niveau 1",
-            "lvl-2": "Niveau 2",
-            "lvl-3": "Niveau 3",
-            "rep-w1-t": "Montage simple",
-            "rep-w1-d": "Changement de pneu ou chambre à air",
-            "rep-w2-t": "Montage simple + medium",
-            "rep-w2-d": "Dévoilage léger + réglages",
-            "rep-w3-t": "Montage simple + medium + complexe",
-            "rep-w3-d": "Changement de jante ou montage tubeless + réglages",
-            "rep-b1-t": "Montage simple",
-            "rep-b1-d": "Câble ou gaine + réglages",
-            "rep-b2-t": "Montage simple + medium",
-            "rep-b2-d": "Changement patins ou plaquettes ou disque ou purge + réglages",
-            "rep-b3-t": "Montage simple + medium + complexe",
-            "rep-b3-d": "Changement étrier/levier + réglages",
-            "rep-t1-t": "Montage simple",
-            "rep-t1-d": "Câble ou gaine ou chaîne + réglages",
-            "rep-t2-t": "Montage simple + medium",
-            "rep-t2-d": "Manette dérailleur + réglages + nettoyage et lubrification",
-            "rep-t3-t": "Montage simple + medium + complexe",
-            "rep-t3-d": "Dérailleur ou cassette + réglages + nettoyage et lubrification",
-
-            // Location
-            "rent-title": "Service Location",
-            "rent-subtitle": "Des équipements de qualité loués à l'heure",
-            "th-equip": "Équipement / Type de Vélo",
-            "th-price": "Tarif Par Heure",
-            "rent-warn": "⚠️ Chaque heure entamée est due ⏱️",
-            "rent-foot-1": "* Jusqu'à 1m45",
-            "rent-foot-2": "** Location accompagnée d'un de nos vélos. Location seule : Charette 20 €/h, Siège Enfant 10 €/h.",
-
-            // Balade Guidée
-            "tour-title": "Découverte du lac d'Annecy",
-            "tour-subtitle": "Balade Guidée en Vélo Électrique autour du Lac d’Annecy",
-            "tour-intro": "Les horaires indiqués sont donnés à titre indicatif afin de garder une expérience détendue et agréable. Le programme reste flexible et le retour peut se faire légèrement plus tôt selon le rythme du groupe.",
-            "tour-inc-h": "Inclus",
-            "tour-inc-1": "Vélo électrique",
-            "tour-inc-2": "Casque",
-            "tour-inc-3": "Guide local",
-            "tour-inc-4": "Anecdotes & spots cachés",
-            "tour-inc-5": "Picnic au bord du lac",
-            "tour-inc-6": "Pauses photos",
-            "tour-inc-7": "Petits groupes (max. 10 personnes)",
-            "tour-tagline": "Découvrez Annecy comme un local 🚴‍♂️🌿",
-            "tour-map-h": "Carte de l'itinéraire",
-
-            // Timeline de la Balade
-            "t-900-t": "Accueil & Briefing",
-            "t-900-d": "Accueil au magasin, réglage des vélos, casques, eau et présentation rapide du programme et des consignes de sécurité. Un départ convivial avec musique, café et conseils locaux.",
-            "t-930-t": "Départ vers le lac",
-            "t-930-d": "Passage par Le Pâquier, les Jardins de l’Europe et le célèbre Pont des Amours avec une première vue sur le lac et les montagnes.",
-            "t-945-t": "Arrêt Pont des Amours",
-            "t-945-d": "Découverte de la légende du pont, de l’histoire d’Annecy surnommée la Venise des Alpes et pause photos.",
-            "t-1000-t": "Balade rive Est",
-            "t-1000-d": "Portion facile et agréable avec plusieurs points de vue panoramiques sur le lac.",
-            "t-1030-t": "Veyrier-du-Lac",
-            "t-1030-d": "Découverte de l’un des plus beaux villages du lac avec ses villas, ses vues montagne/lac et son eau turquoise.",
-            "t-1115-t": "Arrivée à Menthon-Saint-Bernard",
-            "t-1115-d": "Pause dans le charmant village situé au pied du célèbre château.",
-            "t-1130-t": "Arrêt Château de Menthon",
-            "t-1130-d": "Pause panoramique proche du château médiéval. Histoires locales, légendes de Saint Bernard et inspiration Disney.",
-            "t-1210-t": "Route vers Talloires",
-            "t-1210-d": "L’une des plus belles portions de la balade avec des paysages alpins exceptionnels.",
-            "t-1230-t": "Arrivée à Talloires",
-            "t-1230-d": "Découverte de l’atmosphère paisible de l’un des plus beaux villages du lac.",
-            "t-1245-t": "Picnic au bord du lac",
-            "t-1245-d": "Moment détente avec picnic, baignade possible et temps libre dans un cadre exceptionnel.",
-            "t-1345-t": "Départ retour",
-            "t-1345-d": "Retour plus calme et relaxant le long du lac.",
-            "t-1445-t": "Pause baignade / plage",
-            "t-1445-d": "Pause détente avec possibilité de baignade et photos au bord du lac.",
-            "t-1545-t": "Retour par la voie verte",
-            "t-1545-d": "Portion facile et agréable permettant de profiter pleinement du paysage et de l’ambiance locale.",
-            "t-1630-t": "Dernier arrêt panorama",
-            "t-1630-d": "Dernières photos, échanges et recommandations locales avant le retour à Annecy.",
-            "t-1700-t": "Retour Annecy centre",
-            "t-1700-d": "Fin de la balade dans le centre-ville d’Annecy.",
-            "t-1730-t": "Fin d’expérience",
-            "t-1730-d": "Partage des photos, recommandations locales, QR code Instagram et fin de journée conviviale.",
-
-            "form-name-lbl": "Nom complet",
-            "form-email-lbl": "Adresse Email",
-            "form-phone-lbl": "Téléphone (Optionnel)",
-            "form-msg-lbl": "Votre message / Demande de réservation",
-            "form-btn-submit": "Envoyer le message",
-            "form-subject-lbl": "Sujet de votre demande",
-            "form-subj-select": "-- Choisissez un sujet --",
-            "form-subj-rep": "Réparation / Révision d'un vélo",
-            "form-subj-rent": "Location de matériel",
-            "form-subj-tour": "Réservation Balade Guidée",
-            "form-subj-other": "Autre demande",
-            "form-file-lbl": "Ajouter une photo ou un fichier (Optionnel)",
-            "form-file-help": "Format d'image ou PDF accepté (Max 5 Mo)",
-
-            // Contact & Footer
-            "cont-title": "Contact & Informations Générales",
-            "cont-subtitle": "Passez nous voir à l'atelier ou réservez par téléphone",
-            "cont-h-coord": "📍 Coordonnées",
-            "cont-h-contact": "✉️ Contact",
-            "cont-addr": "11 Rue de la Paix, 74000 Annecy, France",
-            "cont-h-hours": "⏱️ Horaires d'Ouverture",
-            "days-w": "Lundi au Vendredi :",
-            "days-s-su": "Samedi et Dimanche * :",
-            "rdv-warn": "* Sur rendez-vous pris la veille au plus tard",
-            "footer-cgv": "Conditions Générales de Vente (CGV)",
-
-            "nav-shop": "Vélos à vendre 🏷️", 
-            "shop-title": "Nos Vélos d'Occasion & Neufs", 
-            "shop-subtitle": "Des vélos entièrement révisés par nos experts, prêts à rouler"
-        },
         en: {
             // Navigation & Hero
             "nav-revisions": "Tune-ups",
@@ -239,46 +101,47 @@ document.addEventListener("DOMContentLoaded", () => {
             "hero-title": "Your Trusted Bike Expert in Annecy",
             "hero-subtitle": "All-brand repairs, comprehensive servicing, and tailor-made rentals. Ride away with peace of mind.",
 
-            // Révisions
+            // Révisions (Forfaits Express, Gold, Diamond)
             "rev-title": "Maintenance Packages",
             "rev-subtitle": "Transparent pricing for optimal bike health",
-            "rev-exp-1": "Brake and gear adjustment",
-            "rev-exp-2": "Tire inflation",
-            "rev-sil-1": "<strong>Express Package Included</strong>",
-            "rev-sil-2": "Drivetrain cleaning and lubrication",
-            "rev-sil-3": "Wheel and crankset inspection",
-            "rev-gld-1": "<strong>Silver Package Included</strong>",
-            "rev-gld-2": "Headset play inspection",
-            "rev-gld-3": "Complete bike wash",
-            "pieces-disclaimer": "* Prices do not include replacement parts",
+            "rev-exp-1": "<strong>Brake</strong> adjustment",
+            "rev-exp-2": "<strong>Transmission</strong> adjustment",
+            "rev-exp-3": "Tire inflation",
+            "rev-gld-1": "<strong>Express</strong> maintenance",
+            "rev-gld-2": "Drivetrain <strong>cleaning</strong> and <strong>lubrication</strong>",
+            "rev-gld-3": "<strong>Wheel</strong> and <strong>crankset</strong> inspection",
+            "rev-dia-1": "<strong>Gold</strong> maintenance",
+            "rev-dia-2": "<strong>Headset</strong> inspection",
+            "rev-dia-3": "<strong style='font-size: 24px'>-50%</strong> on repairs",
+            "pieces-repairs-disclaimer": "* Prices do not include parts or repairs",
+            "pieces-disclaimer": "* Prices do not include parts",
 
-            // Réparations
+            // Réparations (Style Image 2026)
             "rep-title": "Repair Rates",
-            "rep-subtitle": "Targeted interventions based on technical complexity",
+            "rep-subtitle": "Targeted interventions based on the level of complexity",
             "cat-wheel": "WHEEL",
             "cat-brake": "BRAKES",
             "cat-trans": "DRIVETRAIN",
-            "lvl-1": "Level 1",
-            "lvl-2": "Level 2",
-            "lvl-3": "Level 3",
-            "rep-w1-t": "Simple installation",
-            "rep-w1-d": "Tire or inner tube replacement",
-            "rep-w2-t": "Simple + medium installation",
-            "rep-w2-d": "Light wheel truing + adjustments",
-            "rep-w3-t": "Simple + medium + complex installation",
-            "rep-w3-d": "Rim replacement or tubeless setup + adjustments",
-            "rep-b1-t": "Simple installation",
-            "rep-b1-d": "Cable or housing replacement + adjustments",
-            "rep-b2-t": "Simple + medium installation",
-            "rep-b2-d": "Brake pads, disc rotor replacement or brake bleed + adjustments",
-            "rep-b3-t": "Simple + medium + complex installation",
-            "rep-b3-d": "Caliper or lever replacement + adjustments",
-            "rep-t1-t": "Simple installation",
-            "rep-t1-d": "Cable, housing or chain replacement + adjustments",
-            "rep-t2-t": "Simple + medium installation",
-            "rep-t2-d": "Shifter replacement + adjustments + cleaning and lubrication",
-            "rep-t3-t": "Simple + medium + complex installation",
-            "rep-t3-d": "Derailleur or cassette replacement + adjustments + cleaning and lubing",
+            
+            // Blocs de description avec structures complexes (Balises <strong> respectées à 100%)
+            "rep-w1-t": "<strong>Simple</strong> assembly",
+            "rep-w1-d": "Tire or inner tube replacement + adjustment",
+            "rep-w2-t": "<strong>Simple + medium</strong> assembly",
+            "rep-w2-d": "Light wheel truing, tubeless + adjustment",
+            "rep-w3-t": "<strong>Simple + medium + complex</strong> assembly",
+            "rep-w3-d": "Rim replacement + adjustment",
+            "rep-b1-t": "<strong>Simple</strong> assembly",
+            "rep-b1-d": "Cable or housing + adjustment",
+            "rep-b2-t": "<strong>Simple + medium</strong> assembly",
+            "rep-b2-d": "Brake pads or disc rotors replacement or brake bleed + adjustment",
+            "rep-b3-t": "<strong>Simple + medium + complex</strong> assembly",
+            "rep-b3-d": "Caliper/lever replacement + adjustment",
+            "rep-t1-t": "<strong>Simple</strong> assembly",
+            "rep-t1-d": "Cable or housing or chain + adjustment",
+            "rep-t2-t": "<strong>Simple + medium</strong> assembly",
+            "rep-t2-d": "Shifter derailleur + adjustment + cleaning and lubrication",
+            "rep-t3-t": "<strong>Simple + medium + complex</strong> assembly",
+            "rep-t3-d": "Derailleur or cassette + adjustment + cleaning and lubrication",
 
             // Location
             "rent-title": "Rental Service",
@@ -338,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "t-1730-t": "End of Experience",
             "t-1730-d": "Photo sharing, local recommendations, Instagram QR code and a relaxed end to the day.",
 
+            // Formulaire
             "form-name-lbl": "Full Name",
             "form-email-lbl": "Email Address",
             "form-phone-lbl": "Phone Number (Optional)",
@@ -364,11 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "rdv-warn": "* By appointment booked the day before at the latest",
             "footer-cgv": "Terms & Conditions (CGV)",
 
+            // Boutique
             "nav-shop": "Bikes for sale 🏷️", 
             "shop-title": "Our Used & New Bikes", 
             "shop-subtitle": "Bikes fully serviced by our experts, ready to ride"
         }
     };
+
+    // Objet pour mémoriser automatiquement le texte français d'origine écrit dans le HTML
+    const originalFrenchTexts = {};
 
     // INITIALISATION DES BOUTONS DE NAVIGATION APRES LE RENDU DU COMPOSANT CUSTOM
     const popup = document.getElementById('promoPopup');
@@ -427,20 +295,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // FONCTION GLOBALE DE TRADUCTION AVEC PRÉSERVATION DES BALISES INTÉRIEURES
+    // FONCTION GLOBALE DE TRADUCTION AMÉLIORÉE
     function applyTranslations() {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
+        document.querySelectorAll('[node-type], [data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
-            if (translations[currentLang][key]) {
-                // Si l'élément contient du gras (strong), on remplace uniquement le texte mais garde la structure HTML
-                if (element.innerHTML.includes('<strong>')) {
-                    let strongContent = element.querySelector('strong').innerHTML;
-                    // Traduction spécifique pour les cas complexes ou remplacement de contenu brut
-                    if (key === "rev-sil-1") element.innerHTML = `<strong>${translations[currentLang]["rev-sil-1"].replace(/<\/?[^>]+(>|$)/g, "")}</strong>`;
-                    else if (key === "rev-gld-1") element.innerHTML = `<strong>${translations[currentLang]["rev-gld-1"].replace(/<\/?[^>]+(>|$)/g, "")}</strong>`;
-                } else {
-                    element.innerText = translations[currentLang][key];
+            if (!key) return;
+
+            // Au tout premier passage, on sauvegarde le texte français directement écrit dans le HTML
+            if (!(key in originalFrenchTexts)) {
+                originalFrenchTexts[key] = element.innerHTML;
+            }
+
+            if (currentLang === 'en') {
+                // Si anglais : on applique la traduction si elle existe
+                if (translations.en[key]) {
+                    element.innerHTML = translations.en[key];
                 }
+            } else {
+                // Si français : on restaure le texte HTML d'origine capturé au début
+                element.innerHTML = originalFrenchTexts[key];
             }
         });
     }

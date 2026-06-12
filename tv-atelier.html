@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Écran Tarifs Boutique - Fix-Bike</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour l'affichage TV Plein Écran (sans impacter style.css) */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            /* Empêche les barres de défilement sur la télé */
+            background-color: #f8fafc;
+        }
+
+        /* Conteneur du Carrousel */
+        .tv-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Diapositives */
+        .tv-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 60px;
+            box-sizing: border-box;
+        }
+
+        /* Rendre la diapositive active visible */
+        .tv-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Ajustements des sections pour remplir l'écran de la TV */
+        .tv-slide section {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 1600px !important;
+            margin: 0 auto !important;
+        }
+
+        /* Grossir légèrement les titres pour une lecture de loin sur TV */
+        .tv-slide .section-title h2 {
+            font-size: 48px !important;
+            margin-bottom: 20px;
+        }
+
+        .tv-slide .section-title p {
+            font-size: 24px !important;
+        }
+
+        /* Barre de progression discrète en haut de l'écran (indique les 30s) */
+        .progress-bar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            z-index: 9999;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #2962ff;
+        }
+
+        /* Forcer la grille de révision à s'étendre proprement sur grand écran */
+        .revision-grid {
+            margin-top: 30px !important;
+            gap: 40px !important;
+        }
+
+        /* Forcer la grille de réparation à bien utiliser l'espace */
+        #reparations .repair-grid {
+            max-width: 100% !important;
+            margin-top: 20px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="tvProgress"></div>
+    </div>
+
+    <div class="tv-carousel">
+
+        <div class="tv-slide active" id="slide-revisions">
+            <section id="revisions">
+                <div class="section-title">
+                    <h2 data-i18n="rev-title">Révisions</h2>
+                </div>
+
+                <div class="revision-grid">
+                    <div class="revision-card">
+                        <div>
+                            <div class="badge">Express</div>
+                            <div class="price-tag">35 €</div>
+                            <ul class="feature-list">
+                                <li data-i18n="rev-exp-1">Réglage <strong>freins</strong></li>
+                                <li data-i18n="rev-exp-2">Réglage <strong>transimssion</strong></li>
+                                <li data-i18n="rev-exp-3">Gonflage pneus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="revision-card gold-package">
+                        <div>
+                            <div class="badge">Or</div>
+                            <div class="price-tag">60 €</div>
+                            <ul class="feature-list">
+                                <li data-i18n="rev-gld-1">Révision <strong>Express</strong></li>
+                                <li data-i18n="rev-gld-2"><strong>Nettoyage</strong> et <strong>graissage</strong> transmission</li>
+                                <li data-i18n="rev-gld-3">Contrôle des <strong>roues</strong> et <strong>pédalier</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="revision-card diamond-package">
+                        <div>
+                            <div class="badge">Diamant</div>
+                            <div class="price-tag">80 €</div>
+                            <ul class="feature-list">
+                                <li data-i18n="rev-dia-1">Révision <strong>Or</strong></li>
+                                <li data-i18n="rev-dia-2">Contrôle du jeu de <strong>direction</strong></li>
+                                <li data-i18n="rev-dia-3" style="margin-top: -10px;"><strong style="font-size: 48px">-50%</strong> sur les réparations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="disclaimer-text" data-i18n="pieces-repairs-disclaimer">* Les prix n’incluent ni les pièces, ni les réparations</div>
+            </section>
+        </div>
+
+
+        <div class="tv-slide" id="slide-reparations">
+            <section id="reparations">
+                <div class="section-title">
+                    <h2 data-i18n="rep-title">Réparations</h2>
+                </div>
+
+                <div class="repair-box">
+                    <div class="repair-cat">
+                        <div class="repair-category-title" data-i18n="cat-wheel">ROUE</div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-1">Niveau 1</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-w1-t">Montage <strong>simple</strong></div>
+                                <span data-i18n="rep-w1-d">Changement de pneu ou chambre à air</span>
+                            </div>
+                            <div class="repair-price">20 €</div>
+                        </div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-2">Niveau 2</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-w2-t">Montage <strong>simple + medium</strong></div>
+                                <span data-i18n="rep-w2-d">Dévoilage léger ou tubeless + réglages</span>
+                            </div>
+                            <div class="repair-price">40 €</div>
+                        </div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-3">Niveau 3</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-w3-t">Montage <strong>simple + medium + complexe</strong></div>
+                                <span data-i18n="rep-w3-d">Changement de jante + réglages</span>
+                            </div>
+                            <div class="repair-price">60 €</div>
+                        </div>
+                    </div>
+
+                    <div class="repair-cat">
+                        <div class="repair-category-title" data-i18n="cat-brake">FREIN</div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-1">Niveau 1</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-b1-t">Montage <strong>simple</strong></div>
+                                <span data-i18n="rep-b1-d">Câble ou gaine + réglages</span>
+                            </div>
+                            <div class="repair-price">25 €</div>
+                        </div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-2">Niveau 2</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-b2-t">Montage <strong>simple + medium</strong></div>
+                                <span data-i18n="rep-b2-d">Changement patins ou plaquettes ou disque ou purge + réglages</span>
+                            </div>
+                            <div class="repair-price">40 €</div>
+                        </div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-3">Niveau 3</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-b3-t">Montage <strong>simple + medium + complexe</strong></div>
+                                <span data-i18n="rep-b3-d">Changement étrier/levier + réglages</span>
+                            </div>
+                            <div class="repair-price">60 €</div>
+                        </div>
+                    </div>
+
+                    <div class="repair-cat">
+                        <div class="repair-category-title" data-i18n="cat-trans">TRANSMISSION</div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-1">Niveau 1</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-t1-t">Montage <strong>simple</strong></div>
+                                <span data-i18n="rep-t1-d">Câble ou gaine ou chaîne + réglages</span>
+                            </div>
+                            <div class="repair-price">25 €</div>
+                        </div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-2">Niveau 2</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-t2-t">Montage <strong>simple + medium</strong></div>
+                                <span data-i18n="rep-t2-d">Manette dérailleur + réglages + nettoyage et lubrification</span>
+                            </div>
+                            <div class="repair-price">40 €</div>
+                        </div>
+                        <div class="repair-row">
+                            <div class="level-badge" data-i18n="lvl-3">Niveau 3</div>
+                            <div class="repair-desc">
+                                <div data-i18n="rep-t3-t">Montage <strong>simple + medium + complexe</strong></div>
+                                <span data-i18n="rep-t3-d">Dérailleur ou cassette + réglages + nettoyage et lubrification</span>
+                            </div>
+                            <div class="repair-price">60 €</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="disclaimer-text" data-i18n="pieces-disclaimer">* Les prix n’incluent pas les pièces de rechange</div>
+            </section>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll('.tv-slide');
+            const progressBar = document.getElementById('tvProgress');
+            let currentSlideIndex = 0;
+            const duration = 30000; // 30 secondes en millisecondes
+            let startTimestamp = null;
+            let requestAnimationFrameId = null;
+
+            function changeSlide() {
+                // Désactiver la slide actuelle
+                slides[currentSlideIndex].classList.remove('active');
+
+                // Passer à la suivante (boucle)
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+
+                // Activer la nouvelle slide
+                slides[currentSlideIndex].classList.add('active');
+
+                // Relancer l'animation de la barre de progression
+                startTimestamp = null;
+                requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+            }
+
+            function animateProgressBar(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const elapsed = timestamp - startTimestamp;
+
+                // Calcul du pourcentage d'avancement
+                const progressPercentage = Math.min((elapsed / duration) * 100, 100);
+                progressBar.style.width = `${progressPercentage}%`;
+
+                if (elapsed < duration) {
+                    requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+                } else {
+                    changeSlide();
+                }
+            }
+
+            // Démarrage initial de la barre de progression
+            requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+        });
+    </script>
+</body>
+
+</html>

@@ -8,8 +8,8 @@
     --card-bg: #ffffff;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
-    --silver-grad: linear-gradient(135deg, #bdc3c7, #ecf0f1);
     --gold-grad: linear-gradient(135deg, #f1c40f, #f39c12);
+    --diamond-grad: linear-gradient(135deg, #02aeb7, #0283b7);
 }
 
 * {
@@ -199,19 +199,19 @@ section[id] {
     transform: translateY(-5px);
 }
 
-.revision-card.silver-package {
-    background: linear-gradient(135deg, #ffffff, #f1f5f9);
-    border-color: #cbd5e1;
+.revision-card.diamond-package {
+    background: linear-gradient(135deg, #fdfdfd, #43e1ea);
+    border-color: #02aeb7;
 }
 
-.revision-card.silver-package:hover {
-    border-color: #94a3b8;
+.revision-card.diamond-package:hover {
+    border-color: #039097;
     box-shadow: 0 15px 30px rgba(148, 163, 184, 0.15);
 }
 
-.revision-card.silver-package .badge {
-    background: linear-gradient(135deg, #94a3b8, #cbd5e1);
-    color: #0f172a;
+.revision-card.diamond-package .badge {
+    background: linear-gradient(135deg, #02aeb7, #43e1ea);
+    color: white;
 }
 
 .revision-card.gold-package {
@@ -259,9 +259,9 @@ section[id] {
 
 .feature-list li {
     margin-bottom: 12px;
-    display: flex;
+    /* display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 10px; */
     font-size: 15px;
 }
 
@@ -269,6 +269,7 @@ section[id] {
     content: "✓";
     color: #22c55e;
     font-weight: bold;
+    margin-right: 10px;
 }
 
 /* --- REPARATIONS --- */
@@ -276,8 +277,14 @@ section[id] {
     background: white;
     border-radius: 20px;
     box-shadow: var(--shadow);
-    padding: 40px;
+    padding: 40px 10px;
     margin-bottom: 60px;
+    display: flex;
+}
+
+.repair-cat {
+    width: stretch;
+    padding: 0 10px;
 }
 
 .repair-category-title {
@@ -293,15 +300,6 @@ section[id] {
     margin-top: 0;
 }
 
-.repair-row {
-    display: grid;
-    grid-template-columns: 100px 1fr auto;
-    padding: 16px 0;
-    border-bottom: 1px solid #f1f5f9;
-    align-items: center;
-    gap: 20px;
-}
-
 .repair-row:last-child {
     border-bottom: none;
 }
@@ -309,17 +307,62 @@ section[id] {
 .level-badge {
     background: #f1f5f9;
     color: var(--text-dark);
-    padding: 4px 12px;
+    padding: 4px 0;
     border-radius: 6px;
     font-weight: 600;
     font-size: 13px;
     text-align: center;
 }
 
-.repair-desc strong {
+/* .repair-desc strong {
     display: block;
     font-size: 16px;
     color: #0f172a;
+} */
+
+.repair-desc {
+    font-size: 18px;
+}
+
+/* Style des lignes de réparation internes */
+.repair-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    border-bottom: 2px solid #e0e0e0;
+    min-height: 125px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: center;
+    gap: 15px;
+}
+
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+    height: 100%;
+    /* Permet de s'aligner sur la hauteur de la ligne */
+}
+
+/* Style de la description textuelle interne */
+.repair-desc {
+    font-size: 17px;
+    color: #333;
+    line-height: 1.4;
+    text-align: left;
+    /* Aligné à gauche pour un rendu plus propre quand il y a plusieurs lignes */
+    flex-grow: 1;
+
+    /* Centre verticalement le texte dans son espace dédié */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .repair-desc span {
@@ -329,7 +372,7 @@ section[id] {
 
 .repair-price {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
     color: var(--primary);
     background: #eff6ff;
     padding: 6px 14px;
@@ -352,6 +395,81 @@ section[id] {
     margin-top: 20px;
 }
 
+/* FOR .tv-vertical-wrapper */
+.tv-vertical-wrapper .rental-table th {
+    font-size: 28px;
+}
+
+.tv-vertical-wrapper .rental-box>table>tbody>tr>td {
+    font-size: 34px;
+}
+
+.tv-vertical-wrapper .rental-box>table>tbody>tr>td.rental-price-cell {
+    font-size: 54px;
+}
+
+.tv-vertical-wrapper .rental-note-banner {
+    font-size: 28px;
+}
+
+.tv-vertical-wrapper .rental-sub-notes {
+    font-size: 24px;
+}
+
+/* FOR .tv-carousel */
+
+.tv-carousel .tv-slide .section-title h2 {
+    font-size: 48px !important;
+    margin-bottom: 110px;
+}
+
+
+.tv-carousel .repair-category-title {
+    font-size: 32px;
+}
+
+.tv-carousel .repair-desc div {
+    font-size: 22px;
+}
+
+.tv-carousel .repair-desc span {
+    font-size: 18px;
+}
+
+.tv-carousel .repair-price {
+    font-size: 32px;
+}
+
+.tv-carousel .disclaimer-text {
+    font-size: 18px;
+}
+
+.tv-carousel .badge {
+    position: absolute;
+    top: -30px;
+    left: 50px;
+    padding: 6px 26px;
+    border-radius: 50px;
+    font-size: 32px;
+}
+
+.tv-carousel .price-tag {
+    font-size: 62px;
+}
+
+.tv-carousel .feature-list li {
+    font-size: 32px;
+}
+
+
+.eapps-widget-toolbar {
+    display: none;
+}
+
+.rental-box>table>tbody>tr>td {
+    font-size: 22px;
+}
+
 .rental-table th,
 .rental-table td {
     padding: 18px 20px;
@@ -365,7 +483,7 @@ section[id] {
 .rental-table th:last-child,
 .rental-table td:last-child {
     text-align: right;
-    width: 150px;
+    /* width: 150px; */
 }
 
 .rental-table th {
@@ -902,6 +1020,17 @@ footer {
     letter-spacing: 0.5px;
 }
 
+@media (max-width: 1200px) {
+    .repair-box {
+        flex-direction: column;
+    }
+
+    .repair-row {
+        grid-template-columns: 100px 1fr auto;
+        gap: 20px;
+    }
+}
+
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
     .burger-menu {
@@ -939,15 +1068,6 @@ footer {
 
     .hero h1 {
         font-size: 34px;
-    }
-
-    .repair-row {
-        grid-template-columns: 1fr auto;
-    }
-
-    .level-badge {
-        grid-column: span 2;
-        width: max-content;
     }
 
     .info-section {
