@@ -419,11 +419,11 @@ section[id] {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: 100vw;
     width: 100vh;
     padding: 60px 40px;
     box-sizing: border-box;
-    transform: rotate(90deg) translate(0px, -700px);
+    transform: rotate(90deg);
 }
 
 /* FOR .tv-carousel */
