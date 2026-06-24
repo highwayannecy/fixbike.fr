@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "rev-gld-3": "<strong>Wheel</strong> and <strong>crankset</strong> inspection",
             "rev-dia-1": "<strong>Gold</strong> maintenance",
             "rev-dia-2": "<strong>Headset</strong> inspection",
-            "rev-dia-3": "<strong style='font-size: 24px'>-50%</strong> on repairs",
+            "rev-dia-3": "<strong style='font-size: 24px'>-20%</strong> on repairs",
             "pieces-repairs-disclaimer": "* Prices do not include parts or repairs",
             "pieces-disclaimer": "* Prices do not include parts",
 
