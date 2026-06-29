@@ -397,15 +397,15 @@ section[id] {
 
 /* FOR .tv-vertical-wrapper */
 .tv-vertical-wrapper .rental-table th {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .tv-vertical-wrapper .rental-box>table>tbody>tr>td {
-    font-size: 34px;
+    font-size: 30px;
 }
 
 .tv-vertical-wrapper .rental-box>table>tbody>tr>td.rental-price-cell {
-    font-size: 54px;
+    font-size: 48px;
 }
 
 .tv-vertical-wrapper .rental-note-banner {
@@ -476,9 +476,7 @@ section[id] {
     display: none;
 }
 
-.rental-box>table>tbody>tr>td {
-    font-size: 22px;
-}
+
 
 .rental-table th,
 .rental-table td {
@@ -502,11 +500,19 @@ section[id] {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.rental-table th.half-day, .rental-table td.half-day{
+    color: #38bdf8;
+}
+.rental-table th.full-day, .rental-table td.full-day{
+    color: #31f2e7;
 }
 
 .rental-table td {
     border-bottom: 1px solid #334155;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .rental-table tr:last-child td {
@@ -515,7 +521,7 @@ section[id] {
 
 .rental-price-cell {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 24px !important;
     color: #38bdf8;
 }
 
@@ -1087,6 +1093,10 @@ footer {
     .rental-table th:last-child,
     .rental-table td:last-child {
         width: auto;
+    }
+
+    .rental-table td {
+        font-size: 16px;
     }
 
     .tour-layout {

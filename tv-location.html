@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Configuration TV Verticale (9:16) */
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             width: 100vw;
@@ -21,6 +22,10 @@
             box-sizing: border-box;
             align-items: center;
         }
+
+        
+
+
 
         /* --- STYLES DE FORÇAGE POUR TON BLOC INDEX (9:16) --- */
         #location {
@@ -114,44 +119,53 @@
                     <thead>
                         <tr>
                             <th data-i18n="th-equip">Équipement / Type de Vélo</th>
-                            <th data-i18n="th-price">Tarif Par Heure</th>
+                            <th data-i18n="th-price" class="half-day">
+                                1/2 journée 
+                                <div class="th-price-detail">(0 à 3h)</div>
+                            </th>
+                            <th data-i18n="th-price" class="full-day">
+                                Journée 
+                                <div class="th-price-detail">(+ de 3h)</div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>VAE / Vélo Électrique</strong> <small style="color:#94a3b8;">(E-Bike)</small></td>
-                            <td class="rental-price-cell">14 €</td>
+                            <td><strong>Électrique - VAE</strong> <small style="color:#94a3b8;">(E-Bike)</small></td>
+                            <td class="rental-price-cell half-day">32 €</td>
+                            <td class="rental-price-cell full-day">42 €</td>
                         </tr>
                         <tr>
-                            <td><strong>Vélo VTC Sportif</strong> <small style="color:#94a3b8;">(Road Mountain Bike)</small></td>
-                            <td class="rental-price-cell">10 €</td>
+                            <td><strong>Vélo Sportif - VTC</strong> <small style="color:#94a3b8;">(Fitness Bike)</small></td>
+                            <td class="rental-price-cell half-day">16 €</td>
+                            <td class="rental-price-cell full-day">24 €</td>
                         </tr>
                         <tr>
                             <td><strong>Vélo Ville Classique</strong> <small style="color:#94a3b8;">(City Bike)</small></td>
-                            <td class="rental-price-cell">8 €</td>
+                            <td class="rental-price-cell half-day">14 €</td>
+                            <td class="rental-price-cell full-day">22 €</td>
                         </tr>
                         <tr>
                             <td><strong>Vélo Enfant *</strong> <small style="color:#94a3b8;">(Child Bike)</small></td>
-                            <td class="rental-price-cell">6 €</td>
+                            <td class="rental-price-cell half-day">13 €</td>
+                            <td class="rental-price-cell full-day">16 €</td>
                         </tr>
                         <tr>
                             <td><strong>Charette Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Trailer)</small></td>
-                            <td class="rental-price-cell">10 €</td>
+                            <td class="rental-price-cell half-day">13 €</td>
+                            <td class="rental-price-cell full-day">16 €</td>
                         </tr>
                         <tr>
-                            <td><strong>Siège Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Baby Seat)</small></td>
-                            <td class="rental-price-cell">4 €</td>
+                            <td><strong>Siège Enfant (1 à 5 ans) ***</strong> <small style="color:#94a3b8;">(Baby Seat)</small></td>
+                            <td class="rental-price-cell" colspan="2" style="text-align:center">5 €</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <div class="rental-note-banner" data-i18n="rent-warn">
-                    ⚠️ Chaque heure entamée est due ⏱️
-                </div>
-
                 <div class="rental-sub-notes">
                     <p data-i18n="rent-foot-1">* Jusqu'à 1m45</p>
-                    <p data-i18n="rent-foot-2">** Location accompagnée d'un de nos vélos. Location seule : Charette 20 €/h, Siège Enfant 10 €/h.</p>
+                    <p data-i18n="rent-foot-2">** 40kg max. Charette seule (sans vélo) : 1/2 journée = 20 €, journée = 30 €</p>
+                    <p data-i18n="rent-foot-2">*** 20kg max. Siège Enfant seul (sans vélo) : 1/2 journée, journée = 10 €</p>
                 </div>
             </div>
         </section>
