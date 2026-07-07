@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Écran Location Vertical - Fix-Bike</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- SUPPRESSION DES COMPORTEMENTS PAR DÉFAUT --- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f8fafc;
+        }
+
+        /* --- TRICHE DE ROTATION POUR ÉCRAN PHYSIQUE VERTICAL --- */
+        .tv-rotate-container {
+            width: 100vh;
+            height: 100vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            transform-origin: center center;
+            box-sizing: border-box;
+        }
+
+        /* --- STYLES DU CARROUSEL --- */
+        .tv-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Diapositives */
+        .tv-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 40px;
+            box-sizing: border-box;
+        }
+
+        .tv-slide.rent-img{
+            padding: 0 !important;
+        }
+
+        /* Activation de la diapositive */
+        .tv-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Barre de progression (Identique à tv-atelier) */
+        .progress-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #0052cc;
+            /* Couleur principale */
+        }
+
+        /* --- STYLES DE FORÇAGE POUR LA SECTION INDEX --- */
+        #location {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #location .section-title h2 {
+            font-size: 54px !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+        }
+
+        #location .section-title p {
+            font-size: 26px !important;
+            text-align: center !important;
+            margin-bottom: 40px !important;
+        }
+
+        #location .rental-table {
+            font-size: 30px !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        #location .rental-table th {
+            padding: 26px 22px !important;
+            font-size: 32px !important;
+        }
+
+        #location .rental-table td {
+            padding: 26px 22px !important;
+        }
+
+        #location .rental-table strong {
+            font-size: 36px !important;
+            color: #0052cc !important;
+        }
+
+        #location .rent-warning {
+            font-size: 26px !important;
+            text-align: center !important;
+            margin-top: 35px !important;
+            font-weight: bold !important;
+        }
+
+        /* --- BLOC MÉTÉO --- */
+        .weather-bottom-block {
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border: 2px solid #e2e8f0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .weather-info-main {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .weather-temp {
+            font-size: 64px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .weather-city {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .weather-desc {
+            font-size: 22px;
+            color: #64748b;
+            text-transform: capitalize;
+        }
+
+        .weather-details {
+            display: flex;
+            gap: 40px;
+            font-size: 22px;
+            color: #475569;
+        }
+
+        .weather-detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .weather-detail-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0052cc;
+        }
+
+        /* --- DIAPOSITIVE PRODUIT (SLIDE PHOTO) --- */
+        .product-slide-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-title-block {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .product-title-block h3 {
+            font-size: 54px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .product-title-block p {
+            font-size: 28px;
+            color: #64748b;
+        }
+
+        /* Conteneur de l'image pour qu'elle s'ajuste parfaitement en hauteur */
+        .product-image-container {
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Recadre proprement l'image verticalement */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tv-rotate-container">
+
+        <div class="tv-carousel">
+
+            <div class="tv-slide active">
+
+                <section id="locations">
+                    <div class="rental-box">
+                        <table class="rental-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th-equip">Équipement / Type de Vélo</th>
+                                    <th data-i18n="th-price" class="half-day">
+                                        1/2 journée
+                                        <div class="th-price-detail">(0 à 3h)</div>
+                                    </th>
+                                    <th data-i18n="th-price" class="full-day">
+                                        Journée
+                                        <div class="th-price-detail">(+ de 3h)</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Électrique - VAE</strong> <small style="color:#94a3b8;">(E-Bike)</small></td>
+                                    <td class="rental-price-cell half-day">32 €</td>
+                                    <td class="rental-price-cell full-day">42 €</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vélo Sportif - VTC</strong> <small style="color:#94a3b8;">(Fitness Bike)</small></td>
+                                    <td class="rental-price-cell half-day">16 €</td>
+                                    <td class="rental-price-cell full-day">24 €</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vélo Ville Classique</strong> <small style="color:#94a3b8;">(City Bike)</small></td>
+                                    <td class="rental-price-cell half-day">14 €</td>
+                                    <td class="rental-price-cell full-day">22 €</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vélo Enfant *</strong> <small style="color:#94a3b8;">(Child Bike)</small></td>
+                                    <td class="rental-price-cell half-day">13 €</td>
+                                    <td class="rental-price-cell full-day">16 €</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Charette Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Trailer)</small></td>
+                                    <td class="rental-price-cell half-day">13 €</td>
+                                    <td class="rental-price-cell full-day">16 €</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Siège Enfant (1 à 5 ans) ***</strong> <small style="color:#94a3b8;">(Baby Seat)</small></td>
+                                    <td class="rental-price-cell" colspan="2" style="text-align:center">5 €</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="rental-sub-notes">
+                            <p data-i18n="rent-foot-1">* Jusqu'à 1m45</p>
+                            <p data-i18n="rent-foot-2">** 40kg max. Charette seule (sans vélo) : 1/2 journée = 20 €, journée = 30 €</p>
+                            <p data-i18n="rent-foot-2">*** 20kg max. Siège Enfant seul (sans vélo) : 1/2 journée, journée = 10 €</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Elfsight Weather | Untitled Weather -->
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-d4033029-71cf-48e0-b726-554293a1d7b3" data-elfsight-app-lazy></div>
+
+
+            </div>
+
+            <div class="tv-slide rent-img">
+                <div class="product-slide-content">
+                    <div class="product-image-container">
+                        <img src="assets/louer.png" alt="Nos vélos de location" class="product-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll('.tv-slide');
+            const progressBar = document.querySelector('.progress-bar');
+            let currentSlideIndex = 0;
+            const duration = 10000; // Durée de chaque slide : 10 secondes (10000 ms)
+            let startTimestamp = null;
+            let requestAnimationFrameId = null;
+
+            function changeSlide() {
+                slides[currentSlideIndex].classList.remove('active');
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                slides[currentSlideIndex].classList.add('active');
+
+                startTimestamp = null;
+                requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+            }
+
+            function animateProgressBar(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const elapsed = timestamp - startTimestamp;
+
+                const progressPercentage = Math.min((elapsed / duration) * 100, 100);
+                progressBar.style.width = `${progressPercentage}%`;
+
+                if (elapsed < duration) {
+                    requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+                } else {
+                    changeSlide();
+                }
+            }
+
+            requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+        });
+    </script>
+
+    <script>
+        async function fetchAnnecyWeather() {
+            try {
+                const url = "https://api.open-meteo.com/v1/forecast?latitude=45.8992&longitude=6.1294&current=temperature_2m,weather_code,wind_speed_10m,rain&timezone=Europe%2FParis";
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data && data.current) {
+                    const current = data.current;
+                    document.getElementById('app-temp').textContent = `${Math.round(current.temperature_2m)}°C`;
+                    document.getElementById('app-wind').textContent = `${Math.round(current.wind_speed_10m)} km/h`;
+                    document.getElementById('app-rain').textContent = `${current.rain} mm`;
+
+                    const code = current.weather_code;
+                    let description = "Ciel dégagé";
+                    if (code === 0) description = "☀️ Plein soleil";
+                    else if ([1, 2, 3].includes(code)) description = "⛅ Éclaircies";
+                    else if ([45, 48].includes(code)) description = "🌫️ Brouillard";
+                    else if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) description = "🌧️ Pluie";
+                    else if ([71, 73, 75, 77, 85, 86].includes(code)) description = "❄️ Neige";
+                    else if ([95, 96, 99].includes(code)) description = "⛈️ Orageux";
+                    else description = "☁️ Nuageux";
+
+                    document.getElementById('app-desc').textContent = description;
+                }
+            } catch (error) {
+                document.getElementById('app-desc').textContent = "Météo indisponible";
+            }
+        }
+
+        fetchAnnecyWeather();
+        setInterval(fetchAnnecyWeather, 900000); // Mise à jour météo toutes les 15 mins
+    </script>
+
+</body>
+
+</html>
