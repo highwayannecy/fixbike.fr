@@ -252,39 +252,39 @@
                                     <th data-i18n="th-equip">Équipement / Type de Vélo</th>
                                     <th data-i18n="th-price" class="half-day">
                                         1/2 journée
-                                        <div class="th-price-detail">(0 à 3h)</div>
+                                        <div class="th-price-detail">(0 à 4h)</div>
                                     </th>
                                     <th data-i18n="th-price" class="full-day">
                                         Journée
-                                        <div class="th-price-detail">(+ de 3h)</div>
+                                        <div class="th-price-detail">(+ de 4h)</div>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>Électrique - VAE</strong> <small style="color:#94a3b8;">(E-Bike)</small></td>
-                                    <td class="rental-price-cell half-day">32 €</td>
-                                    <td class="rental-price-cell full-day">42 €</td>
+                                    <td class="rental-price-cell half-day">30 €</td>
+                                    <td class="rental-price-cell full-day">45 €</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Vélo Sportif - VTC</strong> <small style="color:#94a3b8;">(Fitness Bike)</small></td>
-                                    <td class="rental-price-cell half-day">16 €</td>
-                                    <td class="rental-price-cell full-day">24 €</td>
+                                    <td class="rental-price-cell half-day">18 €</td>
+                                    <td class="rental-price-cell full-day">26 €</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Vélo Ville Classique</strong> <small style="color:#94a3b8;">(City Bike)</small></td>
-                                    <td class="rental-price-cell half-day">14 €</td>
-                                    <td class="rental-price-cell full-day">22 €</td>
+                                    <td class="rental-price-cell half-day">15 €</td>
+                                    <td class="rental-price-cell full-day">20 €</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Vélo Enfant *</strong> <small style="color:#94a3b8;">(Child Bike)</small></td>
-                                    <td class="rental-price-cell half-day">13 €</td>
-                                    <td class="rental-price-cell full-day">16 €</td>
+                                    <td class="rental-price-cell half-day">12 €</td>
+                                    <td class="rental-price-cell full-day">18 €</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Charette Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Trailer)</small></td>
-                                    <td class="rental-price-cell half-day">13 €</td>
-                                    <td class="rental-price-cell full-day">16 €</td>
+                                    <td class="rental-price-cell half-day">12 €</td>
+                                    <td class="rental-price-cell full-day">18 €</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Siège Enfant (1 à 5 ans) ***</strong> <small style="color:#94a3b8;">(Baby Seat)</small></td>
@@ -325,6 +325,32 @@
     </div>
 
     <script>
+        // Fonction de rafraîchissement du widget Elfsight météo
+        function refreshElfsightWeather() {
+            const oldContainer = document.querySelector('.elfsight-app-d4033029-71cf-48e0-b726-554293a1d7b3');
+            if (!oldContainer) return;
+
+            // Créer un nouveau conteneur identique
+            const newContainer = document.createElement('div');
+            newContainer.className = 'elfsight-app-d4033029-71cf-48e0-b726-554293a1d7b3';
+            newContainer.setAttribute('data-elfsight-app-lazy', '');
+
+            // Remplacer l'ancien par le nouveau (déclenche le rechargement du widget)
+            oldContainer.parentNode.replaceChild(newContainer, oldContainer);
+
+            // Forcer le rechargement du script Elfsight
+            const oldScript = document.querySelector('script[src*="elfsightcdn.com/platform.js"]');
+            if (oldScript) {
+                const newScript = document.createElement('script');
+                newScript.src = 'https://elfsightcdn.com/platform.js';
+                newScript.async = true;
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            }
+        }
+
+        // Rafraîchir la météo toutes les heures
+        setInterval(refreshElfsightWeather, 3600000);
+
         document.addEventListener("DOMContentLoaded", () => {
             const slides = document.querySelectorAll('.tv-slide');
             const progressBar = document.querySelector('.progress-bar');
@@ -358,40 +384,6 @@
 
             requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
         });
-    </script>
-
-    <script>
-        async function fetchAnnecyWeather() {
-            try {
-                const url = "https://api.open-meteo.com/v1/forecast?latitude=45.8992&longitude=6.1294&current=temperature_2m,weather_code,wind_speed_10m,rain&timezone=Europe%2FParis";
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data && data.current) {
-                    const current = data.current;
-                    document.getElementById('app-temp').textContent = `${Math.round(current.temperature_2m)}°C`;
-                    document.getElementById('app-wind').textContent = `${Math.round(current.wind_speed_10m)} km/h`;
-                    document.getElementById('app-rain').textContent = `${current.rain} mm`;
-
-                    const code = current.weather_code;
-                    let description = "Ciel dégagé";
-                    if (code === 0) description = "☀️ Plein soleil";
-                    else if ([1, 2, 3].includes(code)) description = "⛅ Éclaircies";
-                    else if ([45, 48].includes(code)) description = "🌫️ Brouillard";
-                    else if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) description = "🌧️ Pluie";
-                    else if ([71, 73, 75, 77, 85, 86].includes(code)) description = "❄️ Neige";
-                    else if ([95, 96, 99].includes(code)) description = "⛈️ Orageux";
-                    else description = "☁️ Nuageux";
-
-                    document.getElementById('app-desc').textContent = description;
-                }
-            } catch (error) {
-                document.getElementById('app-desc').textContent = "Météo indisponible";
-            }
-        }
-
-        fetchAnnecyWeather();
-        setInterval(fetchAnnecyWeather, 900000); // Mise à jour météo toutes les 15 mins
     </script>
 
 </body>
