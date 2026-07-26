@@ -178,7 +178,7 @@ section[id] {
 .revision-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    gap: 40px;
     margin-bottom: 60px;
 }
 
@@ -250,6 +250,16 @@ section[id] {
     margin: 20px 0;
     display: flex;
     align-items: baseline;
+}
+
+.price-tag {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    text-wrap-mode: nowrap;
 }
 
 .feature-list {
@@ -381,18 +391,22 @@ section[id] {
 
 /* --- LOCATIONS --- */
 .rental-box {
-    background: #1e293b;
+    background: #38b6ff;
     color: white;
     border-radius: 20px;
     padding: 40px;
     box-shadow: var(--shadow);
     margin-bottom: 60px;
+    /* border: 13px solid #4e4e4e; */
 }
 
 .rental-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+}
+.rental-table small {
+    color: #fff;
 }
 
 /* FOR .tv-vertical-wrapper */
@@ -496,8 +510,8 @@ section[id] {
 }
 
 .rental-table th {
-    border-bottom: 2px solid #334155;
-    color: #94a3b8;
+    border-bottom: 2px solid #fff;
+    color: #fff;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -506,16 +520,17 @@ section[id] {
 
 .rental-table th.half-day,
 .rental-table td.half-day {
-    color: #38bdf8;
+    color: #fff;
 }
 
 .rental-table th.full-day,
 .rental-table td.full-day {
-    color: #31f2e7;
+    color: #fff;
 }
 
 .rental-table td {
-    border-bottom: 1px solid #334155;
+    /* border-bottom: 1px solid #334155; */
+    border-bottom: 1px solid #fff;
     font-size: 18px;
 }
 
@@ -526,7 +541,7 @@ section[id] {
 .rental-price-cell {
     font-weight: 700;
     font-size: 24px !important;
-    color: #38bdf8;
+    color: #fff;
 }
 
 .rental-note-banner {
@@ -543,7 +558,7 @@ section[id] {
 .rental-sub-notes {
     margin-top: 15px;
     font-size: 13px;
-    color: #94a3b8;
+    color: #fff;
     line-height: 1.5;
     padding: 0 20px;
 }

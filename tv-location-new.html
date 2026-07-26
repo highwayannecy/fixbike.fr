@@ -49,12 +49,12 @@
             transition: opacity 1s ease-in-out, visibility 1s;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             padding: 60px 40px;
             box-sizing: border-box;
         }
 
-        .tv-slide.rent-img{
+        .tv-slide.rent-img {
             padding: 0 !important;
         }
 
@@ -233,6 +233,18 @@
             object-fit: cover;
             /* Recadre proprement l'image verticalement */
         }
+
+        .card-h {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 90px;
+            margin-bottom: 60px;
+        }
     </style>
 </head>
 
@@ -262,32 +274,32 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Électrique - VAE</strong> <small style="color:#94a3b8;">(E-Bike)</small></td>
+                                    <td><strong>Électrique - VAE</strong> <small>(E-Bike)</small></td>
                                     <td class="rental-price-cell half-day">30 €</td>
                                     <td class="rental-price-cell full-day">45 €</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Vélo Sportif - VTC</strong> <small style="color:#94a3b8;">(Fitness Bike)</small></td>
+                                    <td><strong>Vélo Sportif - VTC</strong> <small>(Fitness Bike)</small></td>
                                     <td class="rental-price-cell half-day">18 €</td>
                                     <td class="rental-price-cell full-day">26 €</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Vélo Ville Classique</strong> <small style="color:#94a3b8;">(City Bike)</small></td>
+                                    <td><strong>Vélo Ville Classique</strong> <small>(City Bike)</small></td>
                                     <td class="rental-price-cell half-day">15 €</td>
                                     <td class="rental-price-cell full-day">20 €</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Vélo Enfant *</strong> <small style="color:#94a3b8;">(Child Bike)</small></td>
+                                    <td><strong>Vélo Enfant *</strong> <small>(Child Bike)</small></td>
                                     <td class="rental-price-cell half-day">12 €</td>
                                     <td class="rental-price-cell full-day">18 €</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Charette Enfant (1 à 5 ans) **</strong> <small style="color:#94a3b8;">(Trailer)</small></td>
-                                    <td class="rental-price-cell half-day">12 €</td>
-                                    <td class="rental-price-cell full-day">18 €</td>
+                                    <td><strong>Charette Enfant (1 à 5 ans) **</strong> <small>(Trailer)</small></td>
+                                    <td class="rental-price-cell half-day">14 €</td>
+                                    <td class="rental-price-cell full-day">20 €</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Siège Enfant (1 à 5 ans) ***</strong> <small style="color:#94a3b8;">(Baby Seat)</small></td>
+                                    <td><strong>Siège Enfant (1 à 5 ans) ***</strong> <small>(Baby Seat)</small></td>
                                     <td class="rental-price-cell" colspan="2" style="text-align:center">5 €</td>
                                 </tr>
                             </tbody>
@@ -314,6 +326,62 @@
                         <img src="assets/louer.png" alt="Nos vélos de location" class="product-img">
                     </div>
                 </div>
+            </div>
+
+            <div class="tv-slide" id="slide-revisions">
+                <section id="revisions">
+
+                    <div class="revision-grid">
+
+                        <div class="section-title" style="margin: 0">
+                            <h2 data-i18n="rev-title">Révisions</h2>
+                        </div>
+
+                        <div class="revision-card">
+                            <div>
+                                <div class="badge">Express</div>
+                                <div class="card-h">
+                                    <ul class="feature-list">
+                                        <li data-i18n="rev-exp-1">Réglage <strong>freins</strong></li>
+                                        <li data-i18n="rev-exp-2">Réglage <strong>transimssion</strong></li>
+                                        <li data-i18n="rev-exp-3">Gonflage pneus</li>
+                                    </ul>
+                                    <div class="price-tag">35 €</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="revision-card gold-package">
+                            <div>
+                                <div class="badge">Or</div>
+                                <div class="card-h">
+                                    <ul class="feature-list">
+                                        <li data-i18n="rev-gld-1">Révision <strong>Express</strong></li>
+                                        <li data-i18n="rev-gld-2"><strong>Nettoyage</strong> et <strong>lubrification</strong> transmission</li>
+                                        <li data-i18n="rev-gld-3">Contrôle des <strong>roues</strong> et <strong>pédalier</strong></li>
+                                    </ul>
+                                    <div class="price-tag">60 €</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="revision-card diamond-package">
+                            <div>
+                                <div class="badge">Diamant</div>
+                                <div class="card-h">
+                                    <ul class="feature-list">
+                                        <li data-i18n="rev-dia-1">Révision <strong>Or</strong></li>
+                                        <li data-i18n="rev-dia-2">Contrôle du jeu de <strong>direction</strong></li>
+                                        <li data-i18n="rev-dia-3" style="margin-top: -10px;"><strong style="font-size: 48px">-20%</strong> sur les réparations</li>
+                                    </ul>
+                                    <div class="price-tag">80 €</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="disclaimer-text" data-i18n="pieces-repairs-disclaimer">* Les prix n’incluent ni les pièces, ni les réparations</div>
+                    </div>
+                </section>
             </div>
 
             <div class="progress-container">
@@ -381,11 +449,9 @@
                     changeSlide();
                 }
             }
-
             requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
         });
     </script>
-
 </body>
 
 </html>
