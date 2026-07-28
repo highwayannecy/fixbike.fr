@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message envoyé - Fix-Bike Annecy</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main.thank-you-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        main.thank-you-page .thank-you-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        main.thank-you-page h1 {
+            font-size: 32px;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+        main.thank-you-page p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        .back-btn {
+            display: inline-block;
+            background: #0052cc;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background: #003d99;
+        }
+    </style>
+</head>
+
+<body>
+
+    <custom-header></custom-header>
+
+    <main class="thank-you-page">
+        <div class="thank-you-icon">✅</div>
+        <h1>Message envoyé avec succès !</h1>
+        <p>Merci pour votre message. Nous vous répondrons dans les plus brefs délais, généralement sous 24h.</p>
+        <a href="index.html" class="back-btn">Retour à l'accueil</a>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

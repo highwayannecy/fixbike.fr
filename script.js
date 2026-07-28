@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>© 2026 fix-bike.fr - Tous droits réservés.</p>
             <div class="footer-links">
                 <a href="cgv.html" data-i18n="footer-cgv">Conditions Générales de Vente (CGV)</a>
+                <a href="mentions-legales.html">Mentions Légales</a>
+                <a href="confidentialite.html">Politique de Confidentialité</a>
             </div>
         </footer>
         `;
@@ -148,9 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "rent-subtitle": "Premium cycling equipment hired by the hour",
             "th-equip": "Equipment / Bike Type",
             "th-price": "Rate Per Hour",
+            "th-price-hd": "1/2 day <div class='th-price-detail'>(0 to 4h)</div>",
+            "th-price-fd": "Full day <div class='th-price-detail'>(+ 4h)</div>",
             "rent-warn": "⚠️ Every single started hour is due ⏱️",
             "rent-foot-1": "* Up to 1m45",
-            "rent-foot-2": "** Rental accompanied by one of our bikes. Single rental: Trailer €20/h, Baby Seat €10/h.",
+            "rent-foot-2": "** Max. 40kg. Trailer only (without bike): half a day = 20 €, full day = 30 €",
+            "rent-foot-3": "*** Max. 20kg. Child seat only (without bike): half-day, full day = 10 €",
 
             // Balade Guidée
             "tour-title": "Annecy Lake Experience",
@@ -221,9 +226,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "cont-subtitle": "Visit our workshop or book by phone",
             "cont-h-coord": "📍 Contact Info",
             "cont-h-contact": "✉️ Contact",
-            "cont-addr": "11 Rue de la Paix, 74000 Annecy, France",
+            "cont-addr": "1 rue Jean Jaures, 74000 Annecy",
             "cont-h-hours": "⏱️ Opening Hours",
-            "days-w": "Monday to Friday:",
+            "days-m": "Monday :",
+            "days-t-to-s": "Tuesday to Saturday :",
             "days-s-su": "Saturday and Sunday *:",
             "rdv-warn": "* By appointment booked the day before at the latest",
             "footer-cgv": "Terms & Conditions (CGV)",

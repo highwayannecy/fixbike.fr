@@ -43,7 +43,7 @@
                         <div class="price-tag">35 €</div>
                         <ul class="feature-list">
                             <li data-i18n="rev-exp-1">Réglage <strong>freins</strong></li>
-                            <li data-i18n="rev-exp-2">Réglage <strong>transimssion</strong></li>
+                            <li data-i18n="rev-exp-2">Réglage <strong>transmission</strong></li>
                             <li data-i18n="rev-exp-3">Gonflage pneus</li>
                         </ul>
                     </div>
@@ -183,11 +183,11 @@
                     <thead>
                         <tr>
                             <th data-i18n="th-equip">Équipement / Type de Vélo</th>
-                            <th data-i18n="th-price" class="half-day">
+                            <th data-i18n="th-price-hd" class="half-day">
                                 1/2 journée
                                 <div class="th-price-detail">(0 à 4h)</div>
                             </th>
-                            <th data-i18n="th-price" class="full-day">
+                            <th data-i18n="th-price-fd" class="full-day">
                                 Journée
                                 <div class="th-price-detail">(+ de 4h)</div>
                             </th>
@@ -229,7 +229,7 @@
                 <div class="rental-sub-notes">
                     <p data-i18n="rent-foot-1">* Jusqu'à 1m45</p>
                     <p data-i18n="rent-foot-2">** 40kg max. Charette seule (sans vélo) : 1/2 journée = 20 €, journée = 30 €</p>
-                    <p data-i18n="rent-foot-2">*** 20kg max. Siège Enfant seul (sans vélo) : 1/2 journée, journée = 10 €</p>
+                    <p data-i18n="rent-foot-3">*** 20kg max. Siège Enfant seul (sans vélo) : 1/2 journée, journée = 10 €</p>
                 </div>
             </div>
         </section>
@@ -381,17 +381,41 @@
                     <p><strong>FixBike Annecy</strong></p>
                     <p data-i18n="cont-addr">1 rue Jean Jaures, 74000 Annecy</p>
                     <p><strong>Téléphone :</strong> <a href="tel:0979070336" style="color:var(--primary); text-decoration:none; font-weight:600;">09 79 07 03 36</a></p>
-                    <p><strong>Email :</strong> fixbike74@gmail.com</p>
+                    <p><strong>Email :</strong> <a href="mailto:fixbike74@gmail.com" style="color:var(--primary); text-decoration:none; font-weight:600;">fixbike74@gmail.com</a></p>
 
-                    <div class="map-container">
-                        <iframe style="width: 100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2041.3830702172029!2d6.127404127513058!3d45.901615524656236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478b8f8b53c33fb9%3A0xe16911316a952d5!2sFIXBIKE%20Annecy%20-%20Bonlieu!5e1!3m2!1sfr!2sfr!4v1780423492397!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div id="mapConsentContainer" class="map-container" style="position:relative; min-height:300px; background:#f1f5f9; border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                        <!-- Overlay consentement (visible avant clic) -->
+                        <div id="mapConsentOverlay" style="position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#f1f5f9; padding:20px; text-align:center; gap:12px;">
+                            <span style="font-size:48px;">🗺️</span>
+                            <p style="font-size:18px; font-weight:600; color:#1e293b; margin:0;">Cliquez pour afficher la carte</p>
+                            <p style="font-size:14px; color:#64748b; margin:0; max-width:300px;">Google Maps charge des cookies tiers. En cliquant, vous acceptez leur utilisation.</p>
+                            <button class="map-consent-btn" style="background:#0052cc; color:white; border:none; padding:12px 28px; border-radius:8px; font-size:16px; font-weight:600; cursor:pointer;">Afficher la carte</button>
+                        </div>
+                        <!-- L'iframe reste avec src vide, rempli au clic -->
+                        <iframe id="gmap-iframe" style="width:100%; height:100%; border:0; position:relative; z-index:1;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
+                    <script>
+                        (function() {
+                            var container = document.getElementById('mapConsentContainer');
+                            var overlay = document.getElementById('mapConsentOverlay');
+                            var iframe = document.getElementById('gmap-iframe');
+                            if (container && overlay && iframe) {
+                                container.addEventListener('click', function() {
+                                    if (!iframe.src) {
+                                        iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2041.3830702172029!2d6.127404127513058!3d45.901615524656236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478b8f8b53c33fb9%3A0xe16911316a952d5!2sFIXBIKE%20Annecy%20-%20Bonlieu!5e1!3m2!1sfr!2sfr!4v1780423492397!5m2!1sfr!2sfr';
+                                        overlay.style.display = 'none';
+                                    }
+                                });
+                            }
+                        })();
+                    </script>
                     <a href="https://maps.app.goo.gl/acNBuc4P9fA6mTgX8" target="_blank" class="map-btn">🗺️ Ouvrir l'itinéraire</a>
                 </div>
 
                 <div class="info-block">
                     <h3 data-i18n="cont-h-hours">⏱️ Horaires d'Ouverture</h3>
-                    <p><strong data-i18n="days-w">Lundi au Samedi :</strong> 10h00 - 18h00</p>
+                    <p><strong data-i18n="days-m">Lundi :</strong> 12h00 - 17h00</p>
+                    <p><strong data-i18n="days-t-to-s">Mardi au Samedi :</strong> 10h00 - 18h00</p>
                 </div>
 
                 <div class="info-block">
@@ -400,8 +424,12 @@
                     <!-- Formulaire adapté pour Web3Forms ou Getform (gérant les fichiers) -->
                     <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="contact-form">
 
-                        <!-- Clé d'accès Web3Forms (à remplacer par la vôtre) -->
+                        <!-- Clé d'accès Web3Forms -->
                         <input type="hidden" name="access_key" value="88e7e542-56e3-41d1-92f7-00bc181a9f45">
+                        <!-- Redirect après soumission (reste sur le site) -->
+                        <input type="hidden" name="redirect" value="https://fix-bike.fr/merci.html">
+                        <!-- Honeypot anti-spam (champ caché, ne pas remplir) -->
+                        <input type="text" name="botcheck" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
 
                         <div class="form-group">
                             <label for="form-name" data-i18n="form-name-lbl">Nom complet</label>
@@ -433,6 +461,13 @@
                         <div class="form-group">
                             <label for="form-message" data-i18n="form-msg-lbl">Votre message / Détails</label>
                             <textarea id="form-message" name="message" rows="4" required placeholder="Précisez votre demande..."></textarea>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 12px;">
+                            <label style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:#475569; cursor:pointer;">
+                                <input type="checkbox" name="consent" required style="margin-top:3px; width:18px; height:18px; flex-shrink:0;">
+                                <span>J'accepte la <a href="confidentialite.html" target="_blank" style="color:#0052cc; text-decoration:underline;">Politique de Confidentialité</a> et autorise le traitement de mes données personnelles pour répondre à ma demande.</span>
+                            </label>
                         </div>
 
                         <button type="submit" class="submit-btn" data-i18n="form-btn-submit">Envoyer le message</button>
