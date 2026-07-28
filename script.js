@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>© 2026 fix-bike.fr - Tous droits réservés.</p>
             <div class="footer-links">
                 <a href="cgv.html" data-i18n="footer-cgv">Conditions Générales de Vente (CGV)</a>
+                <a href="cgl.html">Conditions Générales de Location</a>
                 <a href="mentions-legales.html">Mentions Légales</a>
                 <a href="confidentialite.html">Politique de Confidentialité</a>
             </div>
