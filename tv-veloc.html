@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Écran Location Vertical - Fix-Bike</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- SUPPRESSION DES COMPORTEMENTS PAR DÉFAUT --- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f8fafc;
+        }
+
+        /* --- TRICHE DE ROTATION POUR ÉCRAN PHYSIQUE VERTICAL --- */
+        .tv-rotate-container {
+            width: 100vh;
+            height: 100vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            transform-origin: center center;
+            box-sizing: border-box;
+        }
+
+        /* --- STYLES DU CARROUSEL --- */
+        .tv-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Diapositives */
+        .tv-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 40px;
+            box-sizing: border-box;
+        }
+
+        .tv-slide.rent-img {
+            padding: 0 !important;
+        }
+
+        /* Activation de la diapositive */
+        .tv-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Barre de progression (Identique à tv-atelier) */
+        .progress-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #0052cc;
+            /* Couleur principale */
+        }
+
+        /* --- STYLES DE FORÇAGE POUR LA SECTION INDEX --- */
+        #location {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #location .section-title h2 {
+            font-size: 54px !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+        }
+
+        #location .section-title p {
+            font-size: 26px !important;
+            text-align: center !important;
+            margin-bottom: 40px !important;
+        }
+
+        #location .rental-table {
+            font-size: 30px !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        #location .rental-table th {
+            padding: 26px 22px !important;
+            font-size: 32px !important;
+        }
+
+        #location .rental-table td {
+            padding: 26px 22px !important;
+        }
+
+        #location .rental-table strong {
+            font-size: 36px !important;
+            color: #0052cc !important;
+        }
+
+        #location .rent-warning {
+            font-size: 26px !important;
+            text-align: center !important;
+            margin-top: 35px !important;
+            font-weight: bold !important;
+        }
+
+        /* --- BLOC MÉTÉO --- */
+        .weather-bottom-block {
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border: 2px solid #e2e8f0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .weather-info-main {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .weather-temp {
+            font-size: 64px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .weather-city {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .weather-desc {
+            font-size: 22px;
+            color: #64748b;
+            text-transform: capitalize;
+        }
+
+        .weather-details {
+            display: flex;
+            gap: 40px;
+            font-size: 22px;
+            color: #475569;
+        }
+
+        .weather-detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .weather-detail-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0052cc;
+        }
+
+        /* --- DIAPOSITIVE PRODUIT (SLIDE PHOTO) --- */
+        .product-slide-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-title-block {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .product-title-block h3 {
+            font-size: 54px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .product-title-block p {
+            font-size: 28px;
+            color: #64748b;
+        }
+
+        /* Conteneur de l'image pour qu'elle s'ajuste parfaitement en hauteur */
+        .product-image-container {
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Recadre proprement l'image verticalement */
+        }
+
+        .card-h {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 90px;
+            margin-bottom: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="tv-carousel">
+
+        <div class="tv-slide rent-img active">
+            <div class="product-slide-content">
+                <div class="product-image-container">
+                    <img src="assets/16_9_native.png" alt="native" class="product-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="tv-slide rent-img">
+            <div class="product-slide-content">
+                <div class="product-image-container">
+                    <img src="assets/16_9_sunn.png" alt="sunn" class="product-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll('.tv-slide');
+            const progressBar = document.querySelector('.progress-bar');
+            let currentSlideIndex = 0;
+            const duration = 10000; // Durée de chaque slide : 10 secondes (10000 ms)
+            let startTimestamp = null;
+            let requestAnimationFrameId = null;
+
+            function changeSlide() {
+                slides[currentSlideIndex].classList.remove('active');
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                slides[currentSlideIndex].classList.add('active');
+
+                startTimestamp = null;
+                requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+            }
+
+            function animateProgressBar(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const elapsed = timestamp - startTimestamp;
+
+                const progressPercentage = Math.min((elapsed / duration) * 100, 100);
+                progressBar.style.width = `${progressPercentage}%`;
+
+                if (elapsed < duration) {
+                    requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+                } else {
+                    changeSlide();
+                }
+            }
+            requestAnimationFrameId = requestAnimationFrame(animateProgressBar);
+        });
+    </script>
+</body>
+
+</html>

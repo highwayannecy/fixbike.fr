@@ -46,19 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
             this.innerHTML = `
         <header>
             <div class="header-container">
-                <a href="index.html" class="logo-container">
+                <a href="#" class="logo-container">
                     <img src="assets/logo-fixbike.png" alt="FIXBIKE Logo" class="logo-img">
                 </a>
                 
                 <button class="burger-menu" id="burgerToggle">☰</button>
 
                 <nav id="mainNav">
-                    <a href="index.html#revisions" data-i18n="nav-revisions">Révisions</a>
-                    <a href="index.html#reparations" data-i18n="nav-reparations">Réparations</a>
-                    <a href="index.html#locations" data-i18n="nav-rental">Locations</a>
-                    <a href="index.html#balade" data-i18n="nav-tour">Balade Guidée</a>
+                    <a href="index.html" data-section="revisions" data-i18n="nav-revisions">Révisions</a>
+                    <a href="index.html" data-section="reparations" data-i18n="nav-reparations">Réparations</a>
+                    <a href="index.html" data-section="locations" data-i18n="nav-rental">Locations</a>
+                    <a href="index.html" data-section="balade" data-i18n="nav-tour">Balade Guidée</a>
                     <a href="boutique.html" style="color: var(--accent);" data-i18n="nav-shop">Vélos à vendre 🏷️</a>
-                    <a href="index.html#contact" data-i18n="nav-contact">Contact & Accès</a>
+                    <a href="index.html" data-section="contact" data-i18n="nav-contact">Contact & Accès</a>
                     <div class="nav-actions">
                         <button class="lang-btn" id="langToggle">🇬🇧 EN</button>
                     </div>
@@ -291,12 +291,26 @@ document.addEventListener("DOMContentLoaded", () => {
             burgerToggle.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
         });
 
+        function navToSection(section) {
+            var targetEl = document.getElementById(section);
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.location.href = 'index.html#' + section;
+            }
+        }
+
         const navLinks = mainNav.querySelectorAll('a');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
                     burgerToggle.textContent = '☰';
+                }
+                var section = link.getAttribute('data-section');
+                if (section) {
+                    e.preventDefault();
+                    navToSection(section);
                 }
             });
         });
@@ -394,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             <!-- Action pour l'acheteur -->
             <div style="margin-top: 25px;">
-                <a href="index.html#contact" class="map-btn" style="display: block; text-align: center; background-color: var(--text-dark);">
+                <a href="#contact" class="map-btn" style="display: block; text-align: center; background-color: var(--text-dark);">
                     Interessé ? Contactez l'atelier
                 </a>
             </div>
