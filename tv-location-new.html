@@ -254,7 +254,7 @@
 
         <div class="tv-carousel">
 
-            <div class="tv-slide active">
+            <!--<div class="tv-slide active">
 
                 <section id="locations">
                     <div class="rental-box">
@@ -313,30 +313,14 @@
                     </div>
                 </section>
 
-                <!-- Elfsight Weather | Untitled Weather -->
+                
                 <script src="https://elfsightcdn.com/platform.js" async></script>
                 <div class="elfsight-app-d4033029-71cf-48e0-b726-554293a1d7b3" data-elfsight-app-lazy></div>
 
 
-            </div>
+            </div>-->
 
-            <div class="tv-slide rent-img">
-                <div class="product-slide-content">
-                    <div class="product-image-container">
-                        <img src="assets/9_16_native.png" alt="native" class="product-img">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tv-slide rent-img">
-                <div class="product-slide-content">
-                    <div class="product-image-container">
-                        <img src="assets/9_16_sunn.png" alt="sunn" class="product-img">
-                    </div>
-                </div>
-            </div>
-
-            <div class="tv-slide" id="slide-revisions">
+            <div class="tv-slide active" id="slide-revisions">
                 <section id="revisions">
 
                     <div class="revision-grid">
@@ -390,6 +374,22 @@
                         <div class="disclaimer-text" data-i18n="pieces-repairs-disclaimer">* Les prix n’incluent ni les pièces, ni les réparations</div>
                     </div>
                 </section>
+            </div>            
+
+            <div class="tv-slide rent-img">
+                <div class="product-slide-content">
+                    <div class="product-image-container">
+                        <img src="assets/9_16_native.png" alt="native" class="product-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tv-slide rent-img">
+                <div class="product-slide-content">
+                    <div class="product-image-container">
+                        <img src="assets/9_16_sunn.png" alt="sunn" class="product-img">
+                    </div>
+                </div>
             </div>
 
             <div class="progress-container">
@@ -425,7 +425,7 @@
         }
 
         // Rafraîchir la météo toutes les heures
-        setInterval(refreshElfsightWeather, 3600000);
+        //setInterval(refreshElfsightWeather, 3600000);
 
         document.addEventListener("DOMContentLoaded", () => {
             const slides = document.querySelectorAll('.tv-slide');
