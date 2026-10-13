@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             this.innerHTML = `
         <header>
             <div class="header-container">
-                <a href="#" class="logo-container">
+                <a href="index.html" class="logo-container">
                     <img src="assets/logo-fixbike.png" alt="FIXBIKE Logo" class="logo-img">
                 </a>
                 
@@ -229,9 +229,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "cont-h-contact": "✉️ Contact",
             "cont-addr": "1 rue Jean Jaures, 74000 Annecy",
             "cont-h-hours": "⏱️ Opening Hours",
-            "days-m": "Monday :",
+            "days-th": "Thursday :",
             "days-t-to-s": "Tuesday to Saturday :",
-            "days-s-su": "Saturday and Sunday *:",
             "rdv-warn": "* By appointment booked the day before at the latest",
             "footer-cgv": "Terms & Conditions (CGV)",
 
