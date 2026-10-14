@@ -1041,11 +1041,17 @@ footer {
     transform: scale(1.05);
 }
 
-.bike-title {
+.bike-brand {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-top: 10px;
+}
+.bike-name {
     font-size: 20px;
     font-weight: 700;
     color: var(--text-dark);
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .bike-type {

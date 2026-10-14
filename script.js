@@ -4,39 +4,70 @@ document.addEventListener("DOMContentLoaded", () => {
     const bikesDB = [
         {
             id: 1,
-            name: "NCM T3s",
+            brand: "NAKAMURA",
+            name: "Crossover Native S LTD",
             type: "VAE / Électrique",
-            price: "1 250 €",
-            state: "Proche du neuf",
-            image: "assets/ncm_t3s.webp",
-            features: ["Taille 26\"", "Moteur DAS-KIT x15 (55 Nm)", "Batterie 576Wh", "Autonomie ~90km", "Révisé et garanti 12 mois constructeur"]
+            price: "800 €",
+            state: "Occasion - Très bon état",
+            image: "assets/native.png",
+            features: [
+                "Taille M", 
+                "Naka Hub One (45 Nm)", 
+                "Batterie 375 Wh", 
+                "Autonomie 60km (mode éco)", 
+                "Révisé et garanti 12 mois"
+            ]
         },
         {
             id: 2,
-            name: "TREK ÉMONDA SL 6 PRO 2018",
-            type: "Vélo de route",
-            price: "1 600 €",
-            state: "Occasion - Très bon état",
-            image: "assets/trek.jpg",
-            features: ["Taille 58 (XL)", "Cadre Carbone léger", "Transmission Shimano Ultegra 2x11v", "Poids : 7,8 kg", "Roues : Vittoria QURANO 60 Full Carbon CLINCHER Wheel Set with G+ Graphene"]
+            brand: "SUNN",
+            name: "START S2",
+            type: "VAE / Électrique",
+            price: "990 €",
+            state: "Occasion - Bon état",
+            image: "assets/sunn.png",
+            features: [
+                "Taille M", 
+                "Bosch Active Line (40 Nm)",
+                "Batterie 400 Wh", 
+                "Autonomie 80km (mode éco)", 
+                "Révisé et garanti 12 mois"
+            ]
         },
         {
             id: 3,
-            name: "Orbea AVANT H60 2025",
+            brand: "ORBEA",
+            name: "AVANT H60 2025",
             type: "Vélo de route",
-            price: "1 000 €",
+            price: "900 €",
             state: "Occasion - Excellent état",
             image: "assets/orbea.webp",
-            features: ["Taille 53 (S/M)", "Cadre Aluminium", "Transmission Shimano Claris 2x8v", "Poids : 10,2 kg", "Freins à disque mécanique"]
+            features: [
+                "Taille 53 (S/M)", 
+                "Cadre Aluminium", 
+                "Transmission Shimano Claris 2x8v", 
+                "Poids : 10,2 kg", 
+                "Freins à disque mécanique",
+                "Révisé et garanti 12 mois"
+            ]
         },
         {
             id: 4,
-            name: "ROSSIGNOL Heretic Deore 12",
+            brand: "ROSSIGNOL",
+            name: "Heretic Deore 12",
             type: "VTT Enduro Tout-Suspendu",
-            price: "2 700 €",
+            price: "2 200 €",
             state: "Neuf",
-            image: "assets/rossignol.jpg",
-            features: ["Taille L", "Transmission Shimano Deore 1x12v", "Poids : 17,2 kg", "Disques hydrauliques 4 pistons", "Fourche : Marzocchi Bomber Z1 Rail 2.0 (170 mm de débattement)", "Amortisseur : Marzocchi Bomber Air (165 mm de débattement)"]
+            image: "assets/heretic.png",
+            features: [
+                "Taille L", 
+                "Transmission Shimano Deore 1x12v", 
+                "Poids : 17,2 kg", 
+                "Disques hydrauliques 4 pistons", 
+                "Fourche : Marzocchi Bomber Z1 Rail 2.0 (170 mm de débattement)", 
+                "Amortisseur : Marzocchi Bomber Air (165 mm de débattement)",
+                "Garanti 12 mois"
+            ]
         },
     ];
 
@@ -393,7 +424,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <!-- Infos principales -->
-                <h3 class="bike-title">${bike.name}</h3>
+                <h3 class="bike-brand">${bike.brand}</h3>
+                <h3 class="bike-name">${bike.name}</h3>
                 <small class="bike-type">${bike.type}</small>
                 
                 <!-- Prix standardisé -->
@@ -407,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             <!-- Action pour l'acheteur -->
             <div style="margin-top: 25px;">
-                <a href="#contact" class="map-btn" style="display: block; text-align: center; background-color: var(--text-dark);">
+                <a href="index.html#contact" class="map-btn" style="display: block; text-align: center; background-color: var(--text-dark);">
                     Interessé ? Contactez l'atelier
                 </a>
             </div>
